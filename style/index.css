@@ -10,11 +10,13 @@ body{
     color: #dbdbdb;
     box-sizing: border-box;
     letter-spacing: 0.15rem;
+    min-width: 375px;
 }
 
 img{
     width: 100%;
     content: center;
+    display: block;
 }
 
 header {
@@ -24,18 +26,25 @@ header {
                                     rgba(56,21,1,1) 56%, 
                                     rgb(17, 17, 17) 100%);
     width: 100%;
-    height: 20vh;
+    height: 30vh;
+    text-align: center;
 }
+
 footer{
     background-image: linear-gradient(0deg, 
                                     rgba(59,26,0,1) 0%, 
                                     rgba(56,21,1,1) 40%, 
                                     rgb(17, 17, 17) 100%);
-    height: 15vh;
+    height: 18vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+
 main{
-    height: 65vh;
+    height: 95vh;
     background-image: url("../images/Background/curls.png");
     background-color: #f16100;
     display: flex;
@@ -43,13 +52,6 @@ main{
 
 .logo{
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-footer{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,12 +68,13 @@ footer{
 
 .container{
     /* border: 1px solid red; */
-    width: 60%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 /*
@@ -108,24 +111,31 @@ footer{
     align-items: center;
 }
 
+.hero-name{
+    margin: 0;
+    padding-top: 0.5em;
+    border-bottom: 2px solid;
+}
+
 .hero-details{
     display: flex;
-    width: 80%;
+    width: 90%;
     justify-content: space-between;
     align-items: center;
+    margin: 0;
+    padding: 0.5em 0 1em;
     /* border: 2px solid rgb(0, 0, 255); */
 }
 
-.hero-avatar,
+.hero-item,
 .hero-stats{
     width: 45%;
-    height: 100%;
 }
 
 .hero-avatar{
+    width: 100%;
     border-radius: 12px;
-    border: 2px solid oldlace;
-    
+    border: 2px solid #dbdbdb; 
 }
 
 .health-bar-outer {
@@ -139,12 +149,169 @@ footer{
     background: #2b7508;
     height: 100%;
     border-radius: 2px;
+    width: 80%;
 }
 
 .health-bar-outer .health-bar-inner.danger {
     background:#000874;
 }
 
+.troops-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.creatures-layout,
+.creatures-stats,
+.creatures-details{
+    width: 90%;
+    display: flex;
+}
+
+.creatures-layout{    
+    margin: 1em auto;
+    justify-content: space-between;
+}
+
+.creatures-item, 
+.creature-avatar{
+    border-radius: 10px;
+}
+
+.creatures-item{
+    border: 1px solid;
+}
+
+.creatures-details{
+    margin: 0 auto;
+    justify-content: space-between;
+    /* border: 1px solid yellow; */
+}
+
+.creatures-stats{
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 40%;
+    /* border: 1px solid blue; */
+}
+.stat-icon{
+    display: flex;
+    align-items: center;
+}
+.icon{
+    width: 25%;
+    min-height:26px;
+    margin: 0.5em;
+}
+
+.creatures-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 1px solid green; */
+    width: 50%;
+}
+
+.creatures-dice-container{
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid green; */
+    padding: 10px;
+    margin-bottom: 40px;
+
+}
+
+.creature-dice{
+    height: 100%;
+    width: 25%;
+    padding: 5px;    
+}
+
+/*
+--------------------------------------------------- 
+                    BUTTONS
+---------------------------------------------------
+*/
+
+button {
+    outline: none;
+}
+
+.btn {
+    width: 130px;
+    height: 40px;
+    padding: 10px 25px;
+    border: 2px solid #000;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-attack{
+    position: relative;
+    right: 20px;
+    bottom: 20px;
+    border:none;
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    -webkit-perspective: 230px;
+    perspective: 230px;
+  }
+  .btn-attack span {
+    display: block;
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    border: 2px solid #000;
+    margin:0;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  .btn-attack span:nth-child(1) {
+    box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001;
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+    -webkit-transform-origin: 50% 50% -20px;
+    -moz-transform-origin: 50% 50% -20px;
+    transform-origin: 50% 50% -20px;
+  }
+  .btn-attack span:nth-child(2) {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-transform-origin: 50% 50% -20px;
+    -moz-transform-origin: 50% 50% -20px;
+    transform-origin: 50% 50% -20px;
+  }
+  .btn-attack:hover span:nth-child(1) {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  .btn-attack:hover span:nth-child(2) {
+    background: #e0e5ec;
+    color: #e0e5ec;
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+  }
 
 /*
 --------------------------------------------------- 
@@ -153,7 +320,8 @@ footer{
 */
 
 h1,
-p{
+p,
+.creatures-description h2{
     margin: 0;
 }
 
@@ -163,7 +331,12 @@ h1{
 
 h2{
     font-size: 2.5rem;
-    margin: 1rem 0;
+}
+
+.creatures-description h2{
+    text-align: center;
+    margin-top: 0.25em;
+    font-size: 2rem;
 }
 
 .logo p{
@@ -181,4 +354,33 @@ h2{
 
 .hero-stats * {
     font-size: 1.25rem;
+    line-height: 2.25rem;
+}
+
+.stat-icon{
+    font-size: 1.25rem;
+}
+
+/*
+--------------------------------------------------- 
+                    MEDIA QUERIES
+---------------------------------------------------
+*/
+
+@media (min-width: 768px) {
+    header {
+        height: 20vh;
+    }
+    footer {
+        height: 15vh;
+    }
+    .container {
+        width: 60%;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    .hero-details{
+        width: 80%;
+    }
 }
