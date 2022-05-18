@@ -1,7 +1,7 @@
 const creaturesStats = {
     Air_Elemental: {
         name: "Air Elemental",
-        avatar: "images/Creatures/Air_Elemental_portrait.png",
+        avatar: "images/Creatures/Air_Elemental_portrait.gif",
         damageMin: 2,
         damageMax: 9,
         chanceRatio: 90,
@@ -14,7 +14,7 @@ const creaturesStats = {
 
     Arch_Devil: {
         name: "Arch Devil",
-        avatar: "images/Creatures/Arch_Devil_portrait.png",
+        avatar: "images/Creatures/Arch_Devil_portrait.gif",
         damageMin: 48,
         damageMax: 50,
         chanceRatio: 45,
@@ -27,7 +27,7 @@ const creaturesStats = {
 
     Archangel: {
         name: "Archangel",
-        avatar: "images/Creatures/Archangel_portrait.png",
+        avatar: "images/Creatures/Archangel_portrait.gif",
         damageMin: 48,
         damageMax: 50,
         chanceRatio: 55,
@@ -40,7 +40,7 @@ const creaturesStats = {
 
     Beholder: {
         name: "Beholder",
-        avatar: "images/Creatures/Beholder_portrait.png",
+        avatar: "images/Creatures/Beholder_portrait.gif",
         damageMin: 7,
         damageMax: 9,
         chanceRatio: 90,
@@ -51,5 +51,30 @@ const creaturesStats = {
         diceScoreArray: []
     },
 
+    Black_Dragon: {
+        name: "Black Dragon",
+        avatar: "images/Creatures/Black_Dragon_portrait.gif",
+        damageMin: 40,
+        damageMax: 50,
+        chanceRatio: 50,
+        defense: 35,
+        health: 235,
+        origin: "Dungeon",
+        diceCount: 3,
+        diceScoreArray: []
+    },
+
+    Champion: {
+        name: "Champion",
+        avatar: "images/Creatures/Champion_portrait.gif",
+        damageMin: 30,
+        damageMax: 35,
+        chanceRatio: 60,
+        defense: 25,
+        health: 120,
+        origin: "Castle",
+        diceCount: 2,
+        diceScoreArray: []
+    }
 
 }

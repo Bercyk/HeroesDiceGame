@@ -4,10 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Heroes DiceGame</title>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-    
+    <header>
+        <div class="logo">
+            <h1>Heroes DiceGame</h1>
+            <p>Become a <strong>Hero</strong> above all</p>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="card">
+                <h2 class="hero-name" >Name</h2>
+                <div class="hero-details">
+                    <img class="hero-avatar" src="images/Heroes/Hero_Catherine.png"/>
+                    <div class="hero-stats">
+                        <p class="hero-health">Health: 100</p>
+                        <div class="health-bar"></div>
+                        <p class="hero-attack">Attack: 5</p>
+                        <div class="hero-specialites">
+                            <p>Spell1</p>
+                            <p>Spell2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="troops-container">
+                    <div class="creatures-layout">
+                        <div class="creatures-item">
+                            <img class="creature" src="images/Creatures/Air_Elemental_portrait.gif">
+                        </div>
+                        <div class="creatures-item">
+                            <img class="creature" src="images/Creatures/Arch_Devil_portrait.gif">
+                        </div>
+                        <div class="creatures-item">
+                            <img class="creature" src="images/Creatures/Black_Dragon_portrait.gif">
+                        </div>
+                        <div class="creatures-item">
+                            <img class="creature" src="images/Creatures/Beholder_portrait.gif">
+                        </div>
+                    </div>
+                    <!-- <div class="creatures-stats">
+                        <div class="damage"></div>
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="copyright">
+            <p>Copyright <strong>Bercyk</strong></p>
+            <p>2022</p>
+        </div>
+        <div class="socials">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </footer>
 </body>
-<script ype="module" src="index.js"></script>
+<script type="module" src="index.js"></script>
 </html>
