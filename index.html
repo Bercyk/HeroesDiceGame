@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heroes DiceGame</title>
-    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
@@ -72,15 +72,100 @@
                             <div class="creatures-dice-container">
                                 <img class="creature-dice" src="images/Icons/dice.png">
                                 <img class="creature-dice" src="images/Icons/dice.png">
-                                <!-- <img class="creature-dice" src="images/Icons/dice.png"> -->
                             </div>
-                            <button class="btn btn-attack" id="attackBtn"><span>Click!</span><span>Read More</span></button>
+                            <button class="btn btn-attack" id="attackBtn">Select character</button>
                         </div>
                     </div>
                     
                 </div>
             </div>
+
             <!-- TODO dice on app center! -->
+            <div class="table-container">
+                <div class="table-player-deck player1-deck">
+                    <div class="deck-placeholder">
+                        <!-- <div class="creatures-item">
+                            <img class="creature-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                        </div> -->
+                    </div>
+                </div>
+                <div class="table-deck">
+                    <div class="table-dice-container">
+                        <div class="dice">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-player-deck player2-deck">
+                    <div class="deck-placeholder">
+                        <!-- <div class="creatures-item">
+                            <img class="creature-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="hero-name" >Name</h2>
+                <div class="hero-details">
+                    <div class="hero-item">
+                        <img class="hero-avatar" src="images/Heroes/Hero_Alamar.png"/>
+                    </div>                    
+                    <div class="hero-stats">
+                        <p class="hero-health">Health: 100</p>
+                        <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
+                        <p class="hero-attack">Attack: 5</p>
+                        <div class="hero-specialites">
+                            <p>Spell1 dasd</p>
+                            <p>Spell2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="troops-container">
+                    <div class="creatures-layout">
+                        <div class="creatures-item">
+                            <img class="creature-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                        </div>
+                        <div class="creatures-item">
+                            <img class="creature-avatar" src="images/Creatures/Arch_Devil_portrait.gif">
+                        </div>
+                        <div class="creatures-item">
+                            <img class="creature-avatar" src="images/Creatures/Black_Dragon_portrait.gif">
+                        </div>
+                        <div class="creatures-item">
+                            <img class="creature-avatar" src="images/Creatures/Beholder_portrait.gif">
+                        </div>
+                    </div>
+                    <div class="creatures-details">
+                        <div class="creatures-stats">
+                            <div class="stat-icon">
+                                <img class="icon" src="images/Icons/dmg.png">
+                                <p id="damage">: 15-50</p>
+                            </div>
+                            <div class="stat-icon">
+                                <img class="icon" src="images/Icons/def.png">
+                                <p id="defense">: 25</p>
+                            </div>
+                            <div class="stat-icon">
+                                <img class="icon" src="images/Icons/HP.png">
+                                <p id="healthPoint">: 140</p>
+                            </div>
+                            <div class="stat-icon">
+                                <img class="icon" src="images/Icons/chance.png">
+                                <p id="chanceRatio">: 70%</p>
+                            </div>
+                        </div>
+                        <div class="creatures-description">
+                            <h2 id="creatureName">Dragon</h2>
+                            <div class="creatures-dice-container">
+                                <img class="creature-dice" src="images/Icons/dice.png">
+                                <img class="creature-dice" src="images/Icons/dice.png">
+                            </div>
+                            <button class="btn btn-attack" id="attackBtn">Roll dice!</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
     </main>
     <footer>

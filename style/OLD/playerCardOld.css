@@ -1,0 +1,227 @@
+/*
+--------------------------------------------------- 
+                    CARD
+---------------------------------------------------
+*/
+.card {
+  width: 350px;
+  height: 570px;
+  border: solid 6px transparent;
+  border-radius: 20px;
+  background-image: linear-gradient(45deg, #450000 0%, #5c0000 15%, #6e0505 30%, #660404 45%, #660404 55%, #6e0505 70%, #5c0000 85%, #450000 100%), radial-gradient(circle, black 0%, #db0000 25%, black 50%, #db0000 75%, black 100%);
+  background-clip: content-box, border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hero-name {
+  margin: 0;
+  padding-top: 0.5em;
+  border-bottom: 2px solid;
+}
+
+.hero-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0.5em 0 1em;
+  /* border: 2px solid rgb(0, 0, 255); */
+}
+
+.hero-item,
+.hero-stats {
+  width: 45%;
+}
+
+.hero-avatar {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid #dbdbdb;
+}
+
+.health-bar-outer {
+  background: #171217;
+  height: 0.75vh;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.health-bar-outer .health-bar-inner {
+  background: #2b7508;
+  height: 100%;
+  border-radius: 2px;
+  width: 80%;
+}
+
+.health-bar-outer .health-bar-inner.danger {
+  background: #000874;
+}
+
+.troops-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.creatures-layout,
+.creatures-stats,
+.creatures-details {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.creatures-layout {
+  margin: 1em auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.creatures-item,
+.creature-avatar {
+  border-radius: 10px;
+}
+
+.creatures-item {
+  border: 1px solid;
+}
+
+.creatures-details {
+  margin: 0 auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  /* border: 1px solid yellow; */
+}
+
+.creatures-stats {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 40%;
+  /* border: 1px solid blue; */
+}
+
+.stat-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.icon {
+  width: 25%;
+  min-height: 26px;
+  margin: 0.5em;
+}
+
+.creatures-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  /* border: 1px solid green; */
+  width: 50%;
+}
+
+.creatures-dice-container {
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* border: 1px solid green; */
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.creature-dice {
+  height: 100%;
+  width: 25%;
+  padding: 5px;
+}
+
+/*
+--------------------------------------------------- 
+                    BUTTONS
+---------------------------------------------------
+*/
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 10px 20px;
+  display: inline-block;
+  text-align: center;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.btn-attack {
+  background-color: #dbdbdb;
+  background-image: url("../images/Background/wooden.jpg");
+  background-position: center;
+  background-size: cover;
+  border: 3px solid #dbdbdb;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #dbdbdb;
+}
+
+.btn-attack:hover,
+.btn-attack:focus {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+.btn-attack:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+/*# sourceMappingURL=playerCard.css.map */

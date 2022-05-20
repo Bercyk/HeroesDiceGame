@@ -1,0 +1,19 @@
+@import "./variables";
+
+
+
+body{
+    font-family: 'MedievalSharp', cursive;
+    margin: 0;
+    font-size: 1rem;
+    color: $fontColor;
+    box-sizing: border-box;
+    letter-spacing: 0.15rem;
+    background-image: url(../images/Background/vintage-concrete.png);
+}
+
+header{
+    height: 20vh;
+    background-color: black;
+    border: 1px solid green;
+}
