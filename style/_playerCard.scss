@@ -69,8 +69,10 @@
     height: 65px;
     width: 65px;
     border-radius: $borderSmallRadius;
-    &:hover{
-        border: none;
+    &:hover,
+    :focus,
+    :active{
+        border: 1px solid transparent;
     }
 }
 
@@ -80,8 +82,11 @@
     size: 65px;
     border-radius: $borderSmallRadius*0.75;
 
-    &:hover{
+    &:hover,
+    :focus,
+    :active{
         box-shadow: #dbdbdb 2px 8px 20px;
+        border: 3px solid #a964cd;
     }
 }
 
@@ -141,10 +146,13 @@ button {
     background-image: url("../images/Background/wooden.jpg");
     background-position: center;
     background-size: cover;
-    border: 3px solid #dbdbdb;
-    border-radius: 10px;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #dbdbdb;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    border: 3px solid $fontCharacterColor;
+    border-radius: $borderStandardRadius;
+
+    &:hover,
+    :focus,
+    :active {
+        box-shadow: rgba(0, 0, 0, 0.5) 0 8px 15px;
+        transform: translate(3px , 3px);
+    }
 }

@@ -1,0 +1,25 @@
+.dice{
+    margin: $smallSpacing;
+    width: 75px;
+    height: 75px;
+
+    background-color: #e7e7e7;
+    object-fit: contain;
+    box-shadow:
+    inset 0 5px white, 
+    inset 0 -5px #bbb,
+    inset 5px 0 #d7d7d7, 
+    inset -5px 0 #d7d7d7;
+    border-radius: 10%;
+}
+
+.dot{
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #333;
+    box-shadow: 
+    inset 0 2px #111, 
+    inset 0 -2px #555;
+}

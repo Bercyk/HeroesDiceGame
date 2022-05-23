@@ -42,6 +42,9 @@ footer * {
   text-align: center;
   font-family: 'MedievalSharp', cursive;
   letter-spacing: 0.15rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #dbdbdb;
 }
 
 @media (min-width: 450px) {
@@ -156,8 +159,10 @@ footer * {
   border-radius: 5px;
 }
 
-.creature-placeholder:hover {
-  border: none;
+.creature-placeholder:hover,
+.creature-placeholder :focus,
+.creature-placeholder :active {
+  border: 1px solid transparent;
 }
 
 .creature-avatar {
@@ -167,9 +172,12 @@ footer * {
   border-radius: 3.75px;
 }
 
-.creature-avatar:hover {
+.creature-avatar:hover,
+.creature-avatar :focus,
+.creature-avatar :active {
   -webkit-box-shadow: #dbdbdb 2px 8px 20px;
           box-shadow: #dbdbdb 2px 8px 20px;
+  border: 3px solid #a964cd;
 }
 
 .creatures-details {
@@ -250,11 +258,133 @@ button {
   background-size: cover;
   border: 3px solid #dbdbdb;
   border-radius: 10px;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #dbdbdb;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-          box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.btn-attack:hover,
+.btn-attack :focus,
+.btn-attack :active {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 8px 15px;
+          box-shadow: rgba(0, 0, 0, 0.5) 0 8px 15px;
+  -webkit-transform: translate(3px, 3px);
+          transform: translate(3px, 3px);
+}
+
+.table-container {
+  margin: 1rem auto;
+  width: 300px;
+  height: 450px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: transparent;
+  border: 2px solid #3c6e57;
+  -webkit-box-shadow: rgba(70, 155, 76, 0.7) 0 0 15px 10px;
+          box-shadow: rgba(70, 155, 76, 0.7) 0 0 15px 10px;
+  border-radius: 15px;
+}
+
+.table-player-deck {
+  background-image: url(../images/Background/wood_table.png);
+  height: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.player1-deck {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.player2-deck {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.deck-placeholder {
+  border: 1px solid white;
+  height: 65px;
+  width: 65px;
+  border-radius: 5px;
+}
+
+.creature-fight-avatar {
+  width: 100%;
+  height: 100%;
+  size: 65px;
+  border-radius: 3.75px;
+}
+
+.table-deck {
+  background-image: url(../images/Background/table5.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50%;
+  padding: 0.5rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.table-dice-container {
+  height: 100px;
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem 0;
+}
+
+.dice {
+  margin: 0.5rem;
+  width: 75px;
+  height: 75px;
+  background-color: #e7e7e7;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-box-shadow: inset 0 5px white,  inset 0 -5px #bbb, inset 5px 0 #d7d7d7,  inset -5px 0 #d7d7d7;
+          box-shadow: inset 0 5px white,  inset 0 -5px #bbb, inset 5px 0 #d7d7d7,  inset -5px 0 #d7d7d7;
+  border-radius: 10%;
+}
+
+.dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #333;
+  -webkit-box-shadow: inset 0 2px #111,  inset 0 -2px #555;
+          box-shadow: inset 0 2px #111,  inset 0 -2px #555;
 }
 
 body {
@@ -325,4 +455,3 @@ footer {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-/*# sourceMappingURL=index.css.map */
