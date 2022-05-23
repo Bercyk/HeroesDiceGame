@@ -1,0 +1,150 @@
+.card{
+    background-image: radial-gradient(circle at 50% 50%, #b1b1c2, #a9acbd, #a0a6b8, #98a1b3, #8f9cae, #8797a8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $standardSpacing;
+    border-radius: $borderBigRadius;
+    border: 5px solid #dbdbdb;
+
+}
+
+.hero-details{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.hero-avatar,
+.hero-stats{
+    width: 48%; 
+}
+
+.hero-avatar{
+    border: 1px solid $fontColor;
+    border-radius: 10px;
+}
+
+.hero-stats{
+    padding: $standardSpacing 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.health-bar-outer {
+    background: #171217;
+    height: 6px;
+    border-radius: $borderSmallRadius;
+    width: 100%;
+}
+  
+.health-bar-outer .health-bar-inner {
+    background: #2b7508;
+    height: 100%;
+    border-radius: $borderSmallRadius;
+    width: 80%;
+}
+
+.health-bar-outer .health-bar-inner.danger {
+    background: #000874;
+}
+
+.troops-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: $standardSpacing;
+}
+
+.creatures-layout{
+    display: flex;
+    justify-content: space-between;
+}
+
+.creature-placeholder{
+    border: 1px solid $fontColor;
+    height: 65px;
+    width: 65px;
+    border-radius: $borderSmallRadius;
+    &:hover{
+        border: none;
+    }
+}
+
+.creature-avatar{
+    width: 100%;
+    height: 100%;
+    size: 65px;
+    border-radius: $borderSmallRadius*0.75;
+
+    &:hover{
+        box-shadow: #dbdbdb 2px 8px 20px;
+    }
+}
+
+.creatures-details{
+    display: flex;
+    justify-content: space-between;
+    margin-top: $standardSpacing;
+}
+
+.creatures-stats,
+.creatures-description{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-icon{
+    display: flex;
+    align-items: center;
+}
+
+.icon{
+    height: 30px;
+    width: 30px;
+    margin: $smallSpacing;
+}
+
+.creatures-description{
+    align-items: center;
+    justify-content: center;
+}
+
+.creatures-dice-container{
+    padding: $standardSpacing 0;
+    display: flex;
+    width: 120px;
+    justify-content: space-around;
+    margin-bottom: $standardSpacing;
+}
+
+.creature-dice{
+    height: 30px;
+    width: 30px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.btn-attack {
+    background-image: url("../images/Background/wooden.jpg");
+    background-position: center;
+    background-size: cover;
+    border: 3px solid #dbdbdb;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #dbdbdb;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}

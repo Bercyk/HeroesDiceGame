@@ -1,19 +1,57 @@
 @import "./variables";
+@import "./fonts";
+@import "./playerCard";
 
 
 
 body{
-    font-family: 'MedievalSharp', cursive;
-    margin: 0;
-    font-size: 1rem;
-    color: $fontColor;
     box-sizing: border-box;
-    letter-spacing: 0.15rem;
     background-image: url(../images/Background/vintage-concrete.png);
 }
 
-header{
-    height: 20vh;
-    background-color: black;
-    border: 1px solid green;
+img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+header,
+.logo,
+footer {
+    display: flex;
+    align-items: center;
+}
+
+
+header,
+footer {
+    height: 15vh;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+}
+
+.logo,
+footer{
+    flex-direction: column;  
+}
+
+.copyright{
+    text-align: center;
+    margin-bottom: $standardSpacing;
+}
+
+.socials{
+    width: 70%;
+    max-width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container{
+    width: 350px;
+    margin: $standardSpacing auto;
+    display: flex;
+    flex-direction: column; 
+
 }

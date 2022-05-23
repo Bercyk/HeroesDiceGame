@@ -1,0 +1,61 @@
+body{
+    font-family: 'MedievalSharp', cursive;
+    margin: 0;
+    font-size: 1rem;
+    color: $fontColor;
+    letter-spacing: 0.15rem;
+}
+
+h1,
+p{
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+
+.logo p{
+    font-size: 1.25rem;
+}
+
+footer *{
+    font-size: 0.75rem;
+}
+
+.hero-name{
+    font-size: 2rem;
+    margin: 0;
+    text-decoration: underline;
+    padding-bottom: $smallSpacing;
+}
+
+.hero-stats {
+    font-size: 1.25rem;
+}
+
+.creatures-description h2{
+    margin: 0;
+}
+
+.btn{
+    text-align: center;
+    font-family: 'MedievalSharp', cursive;
+    letter-spacing: 0.15rem;
+}
+
+
+@media (min-width: 450px) {
+
+    h1 {
+        font-size: 3rem;
+    }
+    
+    .logo p{
+        font-size: 1.75rem;
+    }
+    
+    footer *{
+        font-size: 1rem;
+    }
+}
