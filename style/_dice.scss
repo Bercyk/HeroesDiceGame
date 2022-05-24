@@ -1,7 +1,7 @@
 .dice{
     margin: $smallSpacing;
-    width: 75px;
-    height: 75px;
+    width: $diceSize;
+    height: $diceSize;
 
     background-color: #e7e7e7;
     object-fit: contain;
@@ -11,15 +11,75 @@
     inset 5px 0 #d7d7d7, 
     inset -5px 0 #d7d7d7;
     border-radius: 10%;
+    position: relative;
 }
 
 .dot{
     display: block;
-    width: 16px;
-    height: 16px;
+    width: $dotSize;
+    height: $dotSize;
     border-radius: 50%;
     background-color: #333;
     box-shadow: 
     inset 0 2px #111, 
     inset 0 -2px #555;
+    position: absolute;
+}
+
+// center
+.face-one.dot-1,
+.face-three.dot-2,
+.face-five.dot-3{
+    top: $diceSize*0.5;
+    left: $diceSize*0.5;
+    transform: translateX(-50%) translateY(-50%);
+}
+// top left
+.face-two.dot-1,
+.face-three.dot-1,
+.face-four.dot-1,
+.face-five.dot-1,
+.face-six.dot-1{
+    top: $diceSize*0.25;
+    left: $diceSize*0.25;
+    transform: translateX(-50%) translateY(-50%);
+}
+//bottom right
+.face-two.dot-2,
+.face-three.dot-3,
+.face-four.dot-4,
+.face-five.dot-5,
+.face-six.dot-6{
+    top: $diceSize*0.75;
+    left: $diceSize*0.75;
+    transform: translateX(-50%) translateY(-50%);
+}
+// bottom left
+.face-four.dot-2,
+.face-five.dot-2,
+.face-six.dot-3{
+    top: $diceSize*0.75;
+    left: $diceSize*0.25;
+    transform: translateX(-50%) translateY(-50%);
+}
+// top right
+.face-four.dot-3,
+.face-five.dot-4,
+.face-six.dot-4{
+    top: $diceSize*0.25;
+    left: $diceSize*0.75;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+// middle left
+.face-six.dot-2{
+    top: $diceSize*0.5;
+    left: $diceSize*0.25;
+    transform: translateX(-50%) translateY(-50%)
+}
+// middle right
+.face-six.dot-5{
+    top: $diceSize*0.5;
+    left: $diceSize*0.75;
+    transform: translateX(-50%) translateY(-50%)
 }

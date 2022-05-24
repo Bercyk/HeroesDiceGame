@@ -1,6 +1,7 @@
 .table-container{
     margin: $standardSpacing auto;
     width: 300px;
+    min-width: 300px;
     height: 450px;
     display: flex;
     flex-direction: column;
@@ -9,7 +10,7 @@
     border: 2px solid #3c6e57;
     box-shadow: rgba(70, 155, 76, 0.7) 0 0 15px 10px;
     border-radius: $borderBigRadius;
-    
+    position: relative;
 }
 
 .table-player-deck{
@@ -32,17 +33,22 @@
 }
 
 .deck-placeholder{
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: $smallSpacing;
+    border-radius: $borderSmallRadius;
+}
+
+.creature-fight-status{
+    display: flex;
+    flex-direction: column;
+}
+
+.creature-fight-avatar{
     border: 1px solid white;
     height: 65px;
     width: 65px;
     border-radius: $borderSmallRadius;
-}
-
-.creature-fight-avatar{
-    width: 100%;
-    height: 100%;
-    size: 65px;
-    border-radius: $borderSmallRadius*0.75;
+    margin-bottom: $smallSpacing;
 }
 
 .table-deck{
@@ -66,3 +72,13 @@
     align-items: center;
     padding: $smallSpacing 0;
 }
+
+.btn-fight{
+    position: absolute;
+    top: 450px*0.5;
+    left: 300px*0.5;
+    transform: translateX(-50%) translateY(-50%);
+
+
+}
+

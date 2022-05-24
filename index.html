@@ -25,8 +25,8 @@
                         <p class="hero-health">Health: 100</p>
                         <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
                         <p class="hero-attack">Attack: 5</p>
-                        <p>Spell1 dasd</p>
-                        <p>Spell2</p>
+                        <p id="heroSpecial1">Special1</p>
+                        <p id="heroSpecial2">Special2</p>
                     </div>
                 </div>
                 <div class="troops-container">
@@ -81,33 +81,60 @@
             <div class="table-container">
                 <div class="table-player-deck player1-deck">
                     <div class="deck-placeholder">
-                        <img class="creature-fight-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                        <div class="creature-fight-status">
+                            <img class="creature-fight-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                            <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
+                        </div>
                     </div>
                 </div>
                 <div class="table-deck">
-                    <div class="table-dice-container">
-                        <div class="dice first-face">
-                            <div class="dot"></div>
+                    <div id="player1DiceContainer" class="table-dice-container">
+                        <div class="dice">
+                            <div class="dot face-one dot-1"></div>
                         </div>
-                        <div class="dice second-face">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
+                        <div class="dice">
+                            <div class="dot face-two dot-1"></div>
+                            <div class="dot face-two dot-2"></div>
                         </div>
-                        <div class="dice third-face">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div> 
+                        <div class="dice">
+                            <div class="dot face-three dot-1"></div>
+                            <div class="dot face-three dot-2"></div>
+                            <div class="dot face-three dot-3"></div> 
                         </div>
                     </div>
-                    <div class="table-dice-container">
-                        <div class="dice"></div>
+                    <div id="player2DiceContainer" class="table-dice-container">
+                        <div class="dice">
+                            <div class="dot face-four dot-1"></div>
+                            <div class="dot face-four dot-2"></div>
+                            <div class="dot face-four dot-3"></div>
+                            <div class="dot face-four dot-4"></div>  
+                        </div>
+                        <div class="dice">
+                            <div class="dot face-five dot-1"></div>
+                            <div class="dot face-five dot-2"></div>
+                            <div class="dot face-five dot-3"></div>
+                            <div class="dot face-five dot-4"></div>
+                            <div class="dot face-five dot-5"></div>   
+                        </div>
+                        <div class="dice">
+                            <div class="dot face-six dot-1"></div>
+                            <div class="dot face-six dot-2"></div>
+                            <div class="dot face-six dot-3"></div>
+                            <div class="dot face-six dot-4"></div>
+                            <div class="dot face-six dot-5"></div>   
+                            <div class="dot face-six dot-6"></div> 
+                        </div>
                     </div>
                 </div>
                 <div class="table-player-deck player2-deck">
                     <div class="deck-placeholder">
-                        <img class="creature-fight-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                        <div class="creature-fight-status">
+                            <img class="creature-fight-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                            <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
+                        </div>
                     </div>
                 </div>
+                <button class="btn btn-fight">Fight!</button>
             </div>
             
             <div class="card">
@@ -118,8 +145,8 @@
                         <p class="hero-health">Health: 100</p>
                         <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
                         <p class="hero-attack">Attack: 5</p>
-                        <p>Spell1 dasd</p>
-                        <p>Spell2</p>
+                        <p>Special1</p>
+                        <p>Special2</p>
                     </div>
                 </div>
                 <div class="troops-container">

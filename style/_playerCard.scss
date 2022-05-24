@@ -7,6 +7,9 @@
     padding: $standardSpacing;
     border-radius: $borderBigRadius;
     border: 5px solid #dbdbdb;
+    width: 308px;
+    min-width: 308px;
+    height: 495px;
 
 }
 
@@ -150,9 +153,11 @@ button {
     border-radius: $borderStandardRadius;
 
     &:hover,
-    :focus,
-    :active {
+    :focus {
         box-shadow: rgba(0, 0, 0, 0.5) 0 8px 15px;
+    }
+
+    &:active{
         transform: translate(3px , 3px);
     }
 }

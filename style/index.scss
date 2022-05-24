@@ -57,3 +57,32 @@ footer{
     flex-direction: column; 
 
 }
+
+@media (min-width: 1150px){
+    .body{
+        min-width: 1400px;
+        min-height: 815px;
+    }
+
+    main{
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .container{ 
+        min-width: 1300px;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .table-container{
+        transform: rotate(90deg);
+    }
+
+    .creature-fight-avatar{
+        transform: rotate(-90deg);
+    }
+
+}
