@@ -93,6 +93,21 @@
     }
 }
 
+
+//NEED TO BE ASSIGN WHEN CREATURE SELECTED
+// assign into creature-placeholder and creature-avatar
+
+.clear-border{
+    border: 1px solid transparent;
+}
+
+.creature-selected{
+    box-shadow: #dbdbdb 2px 8px 20px;
+    border: 3px solid #a964cd;
+}
+
+// ---------------------------------
+
 .creatures-details{
     display: flex;
     justify-content: space-between;
@@ -135,17 +150,7 @@
     width: 30px;
 }
 
-button {
-    border: none;
-    cursor: pointer;
-}
-
-.btn {
-    padding: 10px 20px;
-    display: inline-block;
-}
-
-.btn-attack {
+.btn-selectCreature {
     background-image: url("../images/Background/wooden.jpg");
     background-position: center;
     background-size: cover;
