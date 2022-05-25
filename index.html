@@ -17,6 +17,7 @@
     </header>
     <main>
         <div class="container">
+            <!-- PLAYER 1 CARD-->
             <div class="card">
                 <h2 class="hero-name" >Name</h2>
                 <div class="hero-details">
@@ -31,8 +32,8 @@
                 </div>
                 <div class="troops-container">
                     <div class="creatures-layout">
-                        <div class="creature-placeholder">
-                            <img class="creature-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                        <div class="creature-placeholder clear-border">
+                            <img class="creature-avatar creature-selected" src="images/Creatures/Air_Elemental_portrait.gif">
                         </div>
                         <div class="creature-placeholder">
                             <img class="creature-avatar" src="images/Creatures/Arch_Devil_portrait.gif">
@@ -70,22 +71,24 @@
                                 <img class="creature-dice" src="images/Icons/dice.png">
                                 <img class="creature-dice" src="images/Icons/dice.png">
                             </div>
-                            <button class="btn btn-attack" id="attackBtn">Select creature</button>
+                            <button class="btn btn-selectCreature" id="selectCreatureBtn">Select creature</button>
                         </div>
                     </div>
                     
                 </div>
             </div>
 
-            <!-- TODO dice on app center! -->
+            <!-- TABLE -->
             <div class="table-container">
                 <div class="table-player-deck player1-deck">
+                    <button class="btn-spell"><p class="action-icon">⚔️</p></button>
                     <div class="deck-placeholder">
                         <div class="creature-fight-status">
                             <img class="creature-fight-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
                             <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
                         </div>
                     </div>
+                    <button class="btn-spell"><p class="action-icon">⚔️</p></button>
                 </div>
                 <div class="table-deck">
                     <div id="player1DiceContainer" class="table-dice-container">
@@ -127,16 +130,19 @@
                     </div>
                 </div>
                 <div class="table-player-deck player2-deck">
+                    <button class="btn-spell"><p class="action-icon">⚔️</p></button>
                     <div class="deck-placeholder">
                         <div class="creature-fight-status">
                             <img class="creature-fight-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
                             <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
                         </div>
                     </div>
+                    <button class="btn-spell"><p class="action-icon">⚔️</p></button>
                 </div>
-                <button class="btn btn-fight">Fight!</button>
+                <button class="btn btn-fight">Fight! ⚔️</button>
+                <!-- <button class="btn-roll"><p class="action-icon">⚔️</p></button> -->
             </div>
-            
+            <!-- PLAYER 2 CARD -->
             <div class="card">
                 <h2 class="hero-name" >Name</h2>
                 <div class="hero-details">
@@ -145,14 +151,14 @@
                         <p class="hero-health">Health: 100</p>
                         <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
                         <p class="hero-attack">Attack: 5</p>
-                        <p>Special1</p>
-                        <p>Special2</p>
+                        <p id="heroSpecial1">Special1</p>
+                        <p id="heroSpecial2">Special2</p>
                     </div>
                 </div>
                 <div class="troops-container">
                     <div class="creatures-layout">
-                        <div class="creature-placeholder">
-                            <img class="creature-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
+                        <div class="creature-placeholder clear-border">
+                            <img class="creature-avatar creature-selected" src="images/Creatures/Air_Elemental_portrait.gif">
                         </div>
                         <div class="creature-placeholder">
                             <img class="creature-avatar" src="images/Creatures/Arch_Devil_portrait.gif">
@@ -190,7 +196,7 @@
                                 <img class="creature-dice" src="images/Icons/dice.png">
                                 <img class="creature-dice" src="images/Icons/dice.png">
                             </div>
-                            <button class="btn btn-attack" id="attackBtn">Select creature</button>
+                            <button class="btn btn-selectCreature" id="selectCreatureBtn">Select creature</button>
                         </div>
                     </div>
                     
