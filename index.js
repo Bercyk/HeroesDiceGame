@@ -154,11 +154,10 @@ function renderHero(player, data){
 
 
 let player
-player = "player1"
 
 //const player1Hero = new Hero(heroStats.)
 
-//getting heros name to an array 
+//getting random object from data
 const heroPlayer1 = getRandomObjectFromData(heroStats)
 const heroPlayer2 = getRandomObjectFromData(heroStats)
 
