@@ -1,4 +1,4 @@
-import {getHealthBarHtml, getPercentage} from "./utils.js"
+import {getPercentage, getRandomObjectFromData} from "./utils.js"
 
 class Hero{
     constructor(data){
@@ -9,7 +9,9 @@ class Hero{
     }
     getHeroTroop(){
         // create new troop from Creature constructor
-        
+
+        // get random troop
+        getRandomObjectFromData
     }
 
     getHealthBarHtml(){

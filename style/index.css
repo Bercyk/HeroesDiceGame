@@ -132,7 +132,6 @@ footer * {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0;
-  white-space: nowrap;
 }
 
 .health-bar-outer {
