@@ -1,2 +1,26 @@
 https://codepen.io/abdelrhmansaid/pen/OJRNOpQ
 
+base damage to creature{
+    random value between damageMin and damageMax
+    +
+    sum of dice value
+    +
+    attack value from hero
+    -
+    creature defense
+}
+
+damage to hero {
+    when creature dies -> {
+        random value between damageMin and damageMax
+            +
+        sum of dice value
+            +
+        attack value from hero
+    }
+
+    chance ratio -> {
+        random value between damageMin and damageMax
+    }
+
+}

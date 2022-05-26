@@ -1,99 +1,101 @@
-const heroesStats = {
+const heroStats = {
 
     Aeris: {
         name: "Aeris",
         heroClass: "Druid",
-        race: "Elf",
+        // race: "Elf",
         avatar: "images/Heroes/Hero_Aeris.png",
         health: 60,
         troops: [],
         troopsCount: 3,
         attack: 3,
-        specialties: ["Reroll Enemy", "Gold Arrow"],
+        specialties: ["Reroll Enemy", "Gold Arrow"]
     },
 
     Alamar: {
         name: "Alamar",
         heroClass: "Warlock",
-        race: "Human",
+        //race: "Human",
         avatar: "images/Heroes/Hero_Alamar.png",
         health: 80,
         troops: [],
         troopsCount: 3,
         attack: 7,
-        specialties: ["Blessing Charge"],
+        specialties: ["Blessing Charge", "none!TODO!"]
     },
 
     Catherine: {
         name: "Catherine",
         heroClass: "Knight",
-        race: "Human",
+        //race: "Human",
         avatar: "images/Heroes/Hero_Catherine.png",
         health: 90,
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Heavenly Morale"],
+        specialties: ["Heavenly Morale"]
     },
 
     Christian: {
         name: "Christian",
         heroClass: "knight",
-        race: "Human",
+        //race: "Human",
         avatar: "images/Heroes/Hero_Christian.png",
         health: 100,
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Reroll Dice"],
+        specialties: ["Reroll Dice"]
     },
 
     Gundula: {
         name: "Gundula",
         heroClass: "Battle Mage",
-        race: "Ogre",
+        //race: "Ogre",
         avatar: "images/Heroes/Hero_Gundula.png",
         health: 90,
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Fireball"],
+        specialties: ["Fireball"]
     },
 
     Gurnisson: {
         name: "Gurnisson",
         heroClass: "Barbarian",
-        race: "Goblin",
+        //race: "Goblin",
         avatar: "images/Heroes/Hero_Gurnisson.png",
         health: 90,
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Third hand"],
+        specialties: ["Third hand"]
     },
 
     Lord_Haart: {
         name: "Lord Haart",
         heroClass: "Death Knight",
-        race: "Lich",
+        //race: "Lich",
         avatar: "images/Heroes/Hero_Lord_Haart_Death_Knight.png",
         health: 80,
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Ressurection"],
+        specialties: ["Ressurection"]
     },
 
     Marius: {
         name: "Marius",
         heroClass: "Demoniac",
-        race: "Demon",
+        //race: "Demon",
         avatar: "images/Heroes/Hero_Marius.png",
         health: 80,
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Gates of Hell", "Abomination"],
+        specialties: ["Gates of Hell", "Abomination"]
     }
 
 }
+
+export default heroStats

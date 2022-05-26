@@ -1,4 +1,4 @@
-const creaturesStats = {
+const creatureStats = {
     Air_Elemental: {
         name: "Air Elemental",
         avatar: "images/Creatures/Air_Elemental_portrait.gif",
@@ -78,3 +78,5 @@ const creaturesStats = {
     }
 
 }
+
+export default creatureStats

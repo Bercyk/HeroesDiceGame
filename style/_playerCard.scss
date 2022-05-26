@@ -13,10 +13,19 @@
 
 }
 
+.hero-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+}
+
 .hero-details{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    // border: $borderTest;
 }
 
 
@@ -35,6 +44,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0;
+    white-space: nowrap;
+     // border: $borderTest1;
 }
 
 .health-bar-outer {

@@ -31,7 +31,7 @@ footer * {
 }
 
 .hero-stats {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .creatures-description h2 {
@@ -85,6 +85,20 @@ footer * {
   height: 495px;
 }
 
+.hero-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .hero-details {
   width: 100%;
   display: -webkit-box;
@@ -117,6 +131,8 @@ footer * {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .health-bar-outer {
