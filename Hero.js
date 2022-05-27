@@ -26,12 +26,11 @@ class Hero{
 
     getHeroHtml(data){
         const {name, heroClass, 
-            avatar, health, 
-            troops,
+            avatar, health,
             attack, specialties} = this
 
             const heroHealthBar = this.getHealthBarHtml()
-
+            // random troop array
             //troops = this.getHeroTroopsArray()
 
         return `
@@ -48,6 +47,10 @@ class Hero{
                 </div>
              </div>
             `
+    }
+
+    getTroopsHtml(data, character){
+
     }
 
 }

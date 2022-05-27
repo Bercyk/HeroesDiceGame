@@ -2,171 +2,112 @@ import creatureStats from "./data/dataCreatures.js"
 import heroStats from "./data/dataHeroes.js"
 import {getRandomObjectFromData} from "./utils.js"
 import Hero from "./Hero.js"
+import Creature from "./Creature.js"
 
+/////////////////////////////////////////////////////////////////////////
+//getting random object from data
+const randomHero1 = getRandomObjectFromData(heroStats)
+const randomHero2 = getRandomObjectFromData(heroStats)
 
-// dumb data
+const randomCreature1 = getRandomObjectFromData(creatureStats)
+const randomCreature2 = getRandomObjectFromData(creatureStats)
 
-const creature1 = {
-    name: "Air Elemental",
-    avatar: "images/Creatures/Air_Elemental_portrait.gif",
-    damageMin: 2,
-    damageMax: 9,
-    chanceRatio: 90,
-    defense: 9,
-    health: 25,
-    origin: "Conflux",
-    diceCount: 1,
-    diceScoreArray: []
-}
+/////////////////////////////////////////////////////////////////////////
 
-const creature2 = {
-    name: "Champion",
-    avatar: "images/Creatures/Champion_portrait.gif",
-    damageMin: 30,
-    damageMax: 35,
-    chanceRatio: 60,
-    defense: 25,
-    health: 120,
-    origin: "Castle",
-    diceCount: 2,
-    diceScoreArray: []
+const getCreatureDiceIconsHtml = (diceCount) => {
+    return new Array(diceCount).fill(0).map(() =>
+        `<img class="creature-dice" src="images/Icons/dice.png">`
+    ).join("")
 }
 
 
 // TODO: add form to choose between one or two players to play (can be random - computer)
-function createTroop(player, dataTroop){
+
+// function createTroop(player, dataTroop){
     
-    const {name, avatar, 
-        damageMin, damageMax, chanceRatio, 
-        defense, health,
-        diceCount, diceScoreArray} = dataTroop
-}
-                                            
-document.getElementById("player1Troops").innerHTML = `
-    <div class="creatures-layout">
-    <div class="creature-placeholder">
-        <img class="creature-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
-    </div>
-    <div class="creature-placeholder">
-        <img class="creature-avatar" src="images/Creatures/Arch_Devil_portrait.gif">
-    </div>
-    <div class="creature-placeholder">
-        <img class="creature-avatar" src="images/Creatures/Black_Dragon_portrait.gif">
-    </div>
-    <div class="creature-placeholder">
-        <img class="creature-avatar" src="images/Creatures/Beholder_portrait.gif">
-    </div>
-    </div>
-    <div class="creatures-details">
-    <div class="creatures-stats">
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/dmg.png">
-            <p id="damage">: 15-50</p>
-        </div>
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/def.png">
-            <p id="defense">: 25</p>
-        </div>
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/HP.png">
-            <p id="healthPoint">: 140</p>
-        </div>
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/chance.png">
-            <p id="chanceRatio">: 70%</p>
-        </div>
-    </div>
-    <div class="creatures-description">
-        <h2 id="creatureName">Dragon</h2>
-        <div class="creatures-dice-container">
-            <img class="creature-dice" src="images/Icons/dice.png">
-            <img class="creature-dice" src="images/Icons/dice.png">
-            <img class="creature-dice" src="images/Icons/dice.png">
-        </div>
-        <button class="btn btn-selectCreature" id="selectCreatureBtn">Select creature</button>
-    </div>
-    </div>
-`
-document.getElementById("player2Troops").innerHTML = `
-    <div class="creatures-layout">
-    <div class="creature-placeholder clear-border">
-        <img class="creature-avatar creature-selected" src="images/Creatures/Air_Elemental_portrait.gif">
-    </div>
-    <div class="creature-placeholder">
-        <img class="creature-avatar" src="images/Creatures/Arch_Devil_portrait.gif">
-    </div>
-    <div class="creature-placeholder">
-        <img class="creature-avatar" src="images/Creatures/Black_Dragon_portrait.gif">
-    </div>
-    <div class="creature-placeholder">
-        <img class="creature-avatar" src="images/Creatures/Beholder_portrait.gif">
-    </div>
-    </div>
-    <div class="creatures-details">
-    <div class="creatures-stats">
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/dmg.png">
-            <p id="damage">: 15-50</p>
-        </div>
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/def.png">
-            <p id="defense">: 25</p>
-        </div>
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/HP.png">
-            <p id="healthPoint">: 140</p>
-        </div>
-        <div class="stat-icon">
-            <img class="icon" src="images/Icons/chance.png">
-            <p id="chanceRatio">: 70%</p>
-        </div>
-    </div>
-    <div class="creatures-description">
-        <h2 id="creatureName">Dragon</h2>
-        <div class="creatures-dice-container">
-            <img class="creature-dice" src="images/Icons/dice.png">
-            <img class="creature-dice" src="images/Icons/dice.png">
-            <img class="creature-dice" src="images/Icons/dice.png">
-        </div>
-        <button class="btn btn-selectCreature" id="selectCreatureBtn">Select creature</button>
-    </div>
-    </div>
-`
-                                            
+//     const {name, avatar, 
+//         damageMin, damageMax, chanceRatio, 
+//         defense, health,
+//         diceCount, diceScoreArray} = dataTroop
 
-function renderHero(player, data){
+//     const creatureDice  = getCreatureDiceIconsHtml(diceCount)
+                                          
+//     document.getElementById(`${player}Troops`).innerHTML = `
+//         <div class="creatures-layout">
+//             <div id="player1Creature1"class="creature-placeholder">
+//                 <img class="creature-avatar" src="${avatar}">
+//             </div>
+//             <div id="player1Creature2" class="creature-placeholder">
 
-    const {name, avatar, health, attack, heroClass, specialties} = data;
+//             </div>
+//             <div id="player1Creature3" class="creature-placeholder">
 
-    document.getElementById(`${player}Hero`).innerHTML = `
-    <h2 class="hero-name" >${name}</h2>
-    <div class="hero-details">
-        <img class="hero-avatar" src="${avatar}"/>                   
-        <div class="hero-stats">
-            <p class="hero-health">Health: ${health}</p>
-            <div class="health-bar-outer"><div class="health-bar-inner"></div></div>
-            <p class="hero-attack">Attack: ${attack}</p>
-            <p class="hero-class">Class: ${heroClass}</p>
-            <p class="hero-special" id="heroSpecial1">${specialties[0]}</p>
-            ${specialties[1] ?  `<p class="hero-special" id="heroSpecial2">${specialties[1]}</p>` : ""}
-        </div>
-    </div>
-`
+//             </div>
+//             <div id="player1Creature4" class="creature-placeholder">
+
+//             </div>
+//         </div>
+//         <div class="creatures-details">
+//             <div class="creatures-stats">
+//                 <div class="stat-icon">
+//                     <img class="icon" src="images/Icons/dmg.png">
+//                     <p id="damage">: ${damageMin}-${damageMax}</p>
+//                 </div>
+//                 <div class="stat-icon">
+//                     <img class="icon" src="images/Icons/def.png">
+//                     <p id="defense">: ${defense}</p>
+//                 </div>
+//                 <div class="stat-icon">
+//                     <img class="icon" src="images/Icons/HP.png">
+//                     <p id="healthPoint">: ${health}</p>
+//                 </div>
+//                 <div class="stat-icon">
+//                     <img class="icon" src="images/Icons/chance.png">
+//                     <p id="chanceRatio">: ${chanceRatio}%</p>
+//                 </div>
+//             </div>
+//             <div class="creatures-description">
+//                 <h2 id="creatureName">${name}</h2>
+//                 <div class="creatures-dice-container">
+//                     ${creatureDice}
+//                 </div>
+//                 <button class="btn btn-selectCreature" id="selectCreatureBtn">Select creature</button>
+//             </div>
+//         </div>
+//     `
+// }
+
+
+// creating Hero instances according to random hero data
+
+const heroCardPlayer1 = new Hero(randomHero1)
+const heroCardPlayer2 = new Hero(randomHero2)
+
+
+const creatureCardPlayer1 = new Creature(randomCreature1)
+const creatureCardPlayer2 = new Creature(randomCreature2)
+
+
+function render(){
+    document.getElementById("player1Hero").innerHTML = heroCardPlayer1.getHeroHtml()
+    document.getElementById("player2Hero").innerHTML = heroCardPlayer2.getHeroHtml()
+
+    document.getElementById("player1Troops").innerHTML = creatureCardPlayer1.getTroopHtml()
+    document.getElementById("player2Troops").innerHTML = creatureCardPlayer2.getTroopHtml()
+
 }
 
 
-let player
+render()
 
-//getting random object from data
-const heroPlayer1 = getRandomObjectFromData(heroStats)
-const heroPlayer2 = getRandomObjectFromData(heroStats)
+// let player = "player1"
+// createTroop(player, randomCharacter1)
+// player = "player2"
+// createTroop(player, randomCharacter2)
 
-const heroCard = new Hero(heroPlayer1)
+// TO CREATE HERO SELECTOR
+// function render(){
+//     document.getElementById("player1Hero").innerHTML = heroCardPlayer1.getHeroHtml()
+//     document.getElementById("player2Hero").innerHTML = heroCardPlayer2.getHeroHtml()
 
-
-document.getElementById("player1Hero").innerHTML = heroCard.getHeroHtml()
-
-// player = "player1"
-// renderHero(player, heroPlayer1)
-player = "player2"
-renderHero(player, heroPlayer2)
+// }
