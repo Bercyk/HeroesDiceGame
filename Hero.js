@@ -1,17 +1,15 @@
-import {getPercentage, getRandomObjectFromData} from "./utils.js"
+import Creature from "./Creature.js"
+import creatureStats from "./data/dataCreatures.js"
+import {getPercentage, getRandomObjectFromData, getTroopsPlaceholderHtml} from "./utils.js"
 
 class Hero{
-    constructor(data){
-        Object.assign(this, data)
+    constructor(dataHero){
+        Object.assign(this, dataHero)
 
         this.maxHealth = this.health
         //troops placeholder !
-    }
-    getHeroTroopArray(){
-        // create new troop from Creature constructor
-
-        // get random troop
-        //getRandomObjectFromData
+        this.troops = this.getHeroCreatureArray(this.troopsCount)
+        this.troopsPlaceholder = getTroopsPlaceholderHtml(this.troopsCount)
     }
 
     getHealthBarHtml(){
@@ -24,14 +22,18 @@ class Hero{
                 ` 
     }
 
-    getHeroHtml(data){
+    getHeroCardHtml(){
         const {name, heroClass, 
-            avatar, health,
-            attack, specialties} = this
+            avatar, health, 
+            attack, specialties, troopsPlaceholder} = this
 
             const heroHealthBar = this.getHealthBarHtml()
-            // random troop array
-            //troops = this.getHeroTroopsArray()
+
+            // generate random hero and troops
+            const heroTroops = this.getHeroCreatureArray()
+            
+            //const creaturePlaceholder = this.getCreaturePlaceholderHtml()
+
 
         return `
             <h2 class="hero-name" >${name}</h2>
@@ -46,11 +48,26 @@ class Hero{
                     ${specialties[1] ?  `<p class="hero-special" id="heroSpecial2">${specialties[1]}</p>` : ""}
                 </div>
              </div>
+             <div class="troops-container">
+                <div class="creatures-layout">
+                    {creaturePlaceholder ? creaturePlaceholder : troopsPlaceholder}
+                </div>
             `
     }
 
-    getTroopsHtml(data, character){
+    getCreaturePlaceholderHtml(){
+        this.troopsPlaceholder = this.troops.map((num) => 
+            `<div id="${this.name}creature${num}"class="creature-placeholder">
+                <img class="creature-avatar" src="{this.troops[num].avatar}}">
+            </div>`
+        )
+        return this.troopsPlaceholder.join("")
+    }
 
+    getHeroCreatureArray(){
+        return new Array(this.troopsCount).fill(0).map(() =>
+            new Creature(getRandomObjectFromData(creatureStats))
+        )
     }
 
 }

@@ -1,39 +1,12 @@
 class Creature{
-    constructor(data){
-        Object.assign(this, data);
+    constructor(dataCreature){
+        Object.assign(this, dataCreature);
 
         // required to create creature health bar
         this.maxHealth = this.health
-
- 
     }
 
-    getTroopHtml(dataTroop){
-    
-        const {avatar} = this
-    
-        const troopDetails = this.getTroopDetailsHtml(dataTroop)
-                                              
-        return `
-            <div class="creatures-layout">
-                <div id="player1Creature1"class="creature-placeholder">
-                    <img class="creature-avatar" src="${avatar}">
-                </div>
-                <div id="player1Creature2" class="creature-placeholder">
-    
-                </div>
-                <div id="player1Creature3" class="creature-placeholder">
-    
-                </div>
-                <div id="player1Creature4" class="creature-placeholder">
-    
-                </div>
-            </div>
-            ${troopDetails}
-        `
-    }
-
-    getTroopDetailsHtml(data){
+    getTroopDetailsHtml(dataCreature){
 
         const {name, 
             damageMin, damageMax, chanceRatio, 
@@ -71,8 +44,8 @@ class Creature{
                 `
     }
 
-    getCreatureDiceIconsHtml = (diceCount) => {
-        return new Array(diceCount).fill(0).map(() =>
+    getCreatureDiceIconsHtml(creatureDiceCount){
+        return new Array(creatureDiceCount).fill(0).map(() =>
             `<img class="creature-dice" src="images/Icons/dice.png">`
         ).join("")
     }
