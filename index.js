@@ -1,6 +1,7 @@
 import creatureStats from "./data/dataCreatures.js"
 import heroStats from "./data/dataHeroes.js"
 import {getRandomObjectFromData} from "./utils.js"
+import Hero from "./Hero.js"
 
 
 // dumb data
@@ -33,7 +34,13 @@ const creature2 = {
 
 
 // TODO: add form to choose between one or two players to play (can be random - computer)
-
+function createTroop(player, dataTroop){
+    
+    const {name, avatar, 
+        damageMin, damageMax, chanceRatio, 
+        defense, health,
+        diceCount, diceScoreArray} = dataTroop
+}
                                             
 document.getElementById("player1Troops").innerHTML = `
     <div class="creatures-layout">
@@ -141,7 +148,7 @@ function renderHero(player, data){
             <p class="hero-attack">Attack: ${attack}</p>
             <p class="hero-class">Class: ${heroClass}</p>
             <p class="hero-special" id="heroSpecial1">${specialties[0]}</p>
-            <p class="hero-special" id="heroSpecial2">${specialties[1]}</p>
+            ${specialties[1] ?  `<p class="hero-special" id="heroSpecial2">${specialties[1]}</p>` : ""}
         </div>
     </div>
 `
@@ -154,7 +161,12 @@ let player
 const heroPlayer1 = getRandomObjectFromData(heroStats)
 const heroPlayer2 = getRandomObjectFromData(heroStats)
 
-player = "player1"
-renderHero(player, heroPlayer1)
+const heroCard = new Hero(heroPlayer1)
+
+
+document.getElementById("player1Hero").innerHTML = heroCard.getHeroHtml()
+
+// player = "player1"
+// renderHero(player, heroPlayer1)
 player = "player2"
 renderHero(player, heroPlayer2)
