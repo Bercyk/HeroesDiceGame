@@ -147,15 +147,8 @@ function renderHero(player, data){
 `
 }
 
-// function renderCreature(player, data){
-
-// }
-
-
 
 let player
-
-//const player1Hero = new Hero(heroStats.)
 
 //getting random object from data
 const heroPlayer1 = getRandomObjectFromData(heroStats)
