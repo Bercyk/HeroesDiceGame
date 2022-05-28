@@ -28,11 +28,21 @@ class Hero{
             attack, specialties, troopsPlaceholder} = this
 
             const heroHealthBar = this.getHealthBarHtml()
+            let creaturePlaceholder
 
             // generate random hero and troops
             const heroTroops = this.getHeroCreatureArray()
-            
-            //const creaturePlaceholder = this.getCreaturePlaceholderHtml()
+            creaturePlaceholder = this.getCreaturePlaceholderHtml()
+
+            // const troopsDetails = heroTroops.map((number, index) =>
+            //     number.getTroopDetailsHtml()
+            // )
+            let troopsDetails = heroTroops[0]
+
+            let test = troopsDetails.getTroopDetailsHtml()
+            //heroTroops[0].getTroopDetailsHtml()
+
+
 
 
         return `
@@ -50,17 +60,23 @@ class Hero{
              </div>
              <div class="troops-container">
                 <div class="creatures-layout">
-                    {creaturePlaceholder ? creaturePlaceholder : troopsPlaceholder}
+                    ${creaturePlaceholder ? creaturePlaceholder : troopsPlaceholder}
                 </div>
+
+            ${test}         
+    </div>
             `
     }
 
     getCreaturePlaceholderHtml(){
-        this.troopsPlaceholder = this.troops.map((num) => 
-            `<div id="${this.name}creature${num}"class="creature-placeholder">
-                <img class="creature-avatar" src="{this.troops[num].avatar}}">
+        this.troopsPlaceholder = this.troops.map((number, index) => 
+            `<div id="${this.name}creature${index+1}"class="creature-placeholder">
+                <img class="creature-avatar" src="${number.avatar}">
             </div>`
         )
+        this.troopsPlaceholder[0] = `<div id="${this.name}creature${1}"class="creature-placeholder clear-border">
+        <img class="creature-avatar creature-selected" src="${this.troops[0].avatar}">
+        </div>`
         return this.troopsPlaceholder.join("")
     }
 

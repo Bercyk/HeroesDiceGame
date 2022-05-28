@@ -6,7 +6,7 @@ class Creature{
         this.maxHealth = this.health
     }
 
-    getTroopDetailsHtml(dataCreature){
+    getTroopDetailsHtml(){
 
         const {name, 
             damageMin, damageMax, chanceRatio, 

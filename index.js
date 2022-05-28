@@ -2,15 +2,12 @@ import heroStats from "./data/dataHeroes.js"
 import {getRandomObjectFromData} from "./utils.js"
 import Hero from "./Hero.js"
 
-
-
-
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 
 
 document.getElementById("player1Card-El").innerHTML = heroCard1.getHeroCardHtml()
 
-console.log(heroCard1.getCreaturePlaceholderHtml())
+//console.log(heroCard1)
 
 
 
