@@ -49,6 +49,61 @@ class Creature{
             `<img class="creature-dice" src="images/Icons/dice.png">`
         ).join("")
     }
+
+    getCreatureSelectedHtml(index, heroData){
+
+        const {name, troops} = heroData
+
+        return `<div id="${name}Creature${index+1}" class="creature-placeholder">
+                    <img class="creature-avatar creature-selected" src="${troops[index].avatar}">
+                </div>`
+    }
+
+    getCreatureHtml(index, heroData){
+
+        const {name, troops} = heroData
+
+        return `<div id="${name}Creature${index+1}" class="creature-placeholder">
+                    <img class="creature-avatar" src="${troops[index].avatar}">
+                </div>`
+    }
+
+    getTroopsLayoutHtml(index, heroData){
+
+        switch (index){
+            case 0:
+                let highlight = this.getCreatureSelectedHtml(index, heroData)
+                
+                
+                return highlight
+            case 1:
+
+            case 2:
+            
+            case 3:
+
+        }
+
+         
+
+
+
+        // this.troopsPlaceholder = this.troops.map((number, index) => 
+        //     `<div id="${this.name}creature${index+1}"class="creature-placeholder">
+        //         <img class="creature-avatar" src="${number.avatar}">
+        //     </div>`
+        // )
+        // if(this.isDefaultRender){
+        //     this.troopsPlaceholder[0] = `<div id="${this.name}creature${1}"class="creature-placeholder">
+        //     <img class="creature-avatar creature-selected" src="${this.troops[0].avatar}">
+        //     </div>`
+        //     this.isDefaultRender = false;
+        // }
+
+        // this.troopsPlaceholder.join("")
+
+
+    }
 }
 
 export default Creature
