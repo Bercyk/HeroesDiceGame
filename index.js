@@ -5,9 +5,9 @@ import Hero from "./Hero.js"
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 
 
-document.getElementById("player1Card-El").innerHTML = heroCard1.getHeroCardHtml()
+document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtml()
 
-//console.log(heroCard1)
+console.log(heroCard1)
 
 
 

@@ -11,8 +11,8 @@ function getRandomObjectFromData(object) {
     return object[key[ key.length * Math.random() << 0]]
 } 
 
-function getTroopsPlaceholderHtml(troopsCount) {
-    return new Array(troopsCount).fill(0).map(()=>
+function getTroopsPlaceholderHtml() {
+    return new Array(4).fill(0).map(()=>
         `<div class="creature-placeholder">
         </div>`
     ).join("")

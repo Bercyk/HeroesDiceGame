@@ -6,10 +6,10 @@ class Hero{
     constructor(dataHero){
         Object.assign(this, dataHero)
 
-        this.maxHealth = this.health
-        //troops placeholder !
-        this.troops = this.getHeroCreatureArray(this.troopsCount)
-        this.troopsPlaceholder = getTroopsPlaceholderHtml(this.troopsCount)
+        this.maxHealth = this.health       
+        this.troops = this.getHeroCreatureArray()
+        
+        this.isDefaultRender = true;
     }
 
     getHealthBarHtml(){
@@ -22,62 +22,45 @@ class Hero{
                 ` 
     }
 
-    getHeroCardHtml(){
+    getHeroContainerHtml(){
         const {name, heroClass, 
-            avatar, health, 
-            attack, specialties, troopsPlaceholder} = this
+            avatar, health,
+            attack, specialties} = this
 
-            const heroHealthBar = this.getHealthBarHtml()
-            let creaturePlaceholder
-
-            // generate random hero and troops
-            const heroTroops = this.getHeroCreatureArray()
-            creaturePlaceholder = this.getCreaturePlaceholderHtml()
-
-            // const troopsDetails = heroTroops.map((number, index) =>
-            //     number.getTroopDetailsHtml()
-            // )
-            let troopsDetails = heroTroops[0]
-
-            let test = troopsDetails.getTroopDetailsHtml()
-            //heroTroops[0].getTroopDetailsHtml()
-
-
-
+        const heroHealthBar = this.getHealthBarHtml()
 
         return `
-            <h2 class="hero-name" >${name}</h2>
-            <div class="hero-details">
-                <img class="hero-avatar" src="${avatar}"/>                   
-                <div class="hero-stats">
-                    <p class="hero-health">Health: ${health}</p>
-                    ${heroHealthBar}
-                    <p class="hero-attack">Attack: ${attack}</p>
-                    <p class="hero-class">Class: ${heroClass}</p>
-                    <p class="hero-special" id="heroSpecial1">${specialties[0]}</p>
-                    ${specialties[1] ?  `<p class="hero-special" id="heroSpecial2">${specialties[1]}</p>` : ""}
+            <div id="${name.replace(/\s+/g, '')}" class="hero-container">
+                <h2 class="hero-name" >${name}</h2>
+                <div class="hero-details">
+                    <img class="hero-avatar" src="${avatar}"/>                   
+                    <div class="hero-stats">
+                        <p class="hero-health">Health: ${health}</p>
+                        ${heroHealthBar}
+                        <p class="hero-attack">Attack: ${attack}</p>
+                        <p class="hero-class">Class: ${heroClass}</p>
+                        <p class="hero-special" id="heroSpecial1">${specialties[0]}</p>
+                        ${specialties[1] ?  `<p class="hero-special" id="heroSpecial2">${specialties[1]}</p>` : ""}
+                    </div>
                 </div>
              </div>
-             <div class="troops-container">
-                <div class="creatures-layout">
-                    ${creaturePlaceholder ? creaturePlaceholder : troopsPlaceholder}
-                </div>
-
-            ${test}         
-    </div>
             `
     }
 
+    getPlayerCardHtml(){
+
+        const heroContainer = this.getHeroContainerHtml()
+        //TODO: hero troops
+        const heroTroopsLayout = this.troops.map((number, index) => 
+                number.getTroopsLayoutHtml(index, this)
+            )
+
+
+        return heroTroopsLayout
+    }
+
     getCreaturePlaceholderHtml(){
-        this.troopsPlaceholder = this.troops.map((number, index) => 
-            `<div id="${this.name}creature${index+1}"class="creature-placeholder">
-                <img class="creature-avatar" src="${number.avatar}">
-            </div>`
-        )
-        this.troopsPlaceholder[0] = `<div id="${this.name}creature${1}"class="creature-placeholder clear-border">
-        <img class="creature-avatar creature-selected" src="${this.troops[0].avatar}">
-        </div>`
-        return this.troopsPlaceholder.join("")
+        
     }
 
     getHeroCreatureArray(){
