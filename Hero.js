@@ -51,12 +51,13 @@ class Hero{
 
         const heroContainer = this.getHeroContainerHtml()
         //TODO: hero troops
+        
         const heroTroopsLayout = this.troops.map((number, index) => 
                 number.getTroopsLayoutHtml(index, this)
             )
 
 
-        return heroTroopsLayout
+        return heroContainer + heroTroopsLayout[0]
     }
 
     getCreaturePlaceholderHtml(){

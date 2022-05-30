@@ -68,25 +68,29 @@ class Creature{
                 </div>`
     }
 
-    getTroopsLayoutHtml(index, heroData){
+    getTroopsLayoutHtml(indexTroopsLayout, heroData){
 
-        switch (index){
+        let troopArrayElement = new Array(heroData.troops.length).fill(0).map((element, index) =>
+            this.getCreatureHtml(index, heroData)
+            )
+
+        switch(indexTroopsLayout){
+
             case 0:
-                let highlight = this.getCreatureSelectedHtml(index, heroData)
-                
-                
-                return highlight
+                troopArrayElement[0] = this.getCreatureSelectedHtml(0,heroData)
+            break;
             case 1:
-
+                troopArrayElement[1] = this.getCreatureSelectedHtml(1,heroData)
+            break;
             case 2:
-            
+                troopArrayElement[2] = this.getCreatureSelectedHtml(2,heroData)
+            break;
             case 3:
-
+                troopArrayElement[3] = this.getCreatureSelectedHtml(3,heroData)
+            break;
         }
-
-         
-
-
+        
+        return troopArrayElement.join("")
 
         // this.troopsPlaceholder = this.troops.map((number, index) => 
         //     `<div id="${this.name}creature${index+1}"class="creature-placeholder">
