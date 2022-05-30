@@ -52,16 +52,22 @@ class Hero{
         const heroContainer = this.getHeroContainerHtml()
         //TODO: hero troops
         
-        const heroTroopsLayout = this.troops.map((number, index) => 
-                number.getTroopsLayoutHtml(index, this)
+        const heroTroopsLayoutArray = this.troops.map((troopObject, index) => 
+                troopObject.getTroopsLayoutArrayHtml(index, this)
             )
 
+        const heroTroopDetailsArray = this.troops.map((troopObject) =>
+            troopObject.getTroopDetailsHtml()
+        )
 
-        return heroContainer + heroTroopsLayout[0]
-    }
 
-    getCreaturePlaceholderHtml(){
-        
+        return `${heroContainer}
+                <div id="${this.name}Troops" "class="troops-container"> 
+                    <div id="creaturesLayout" class="creatures-layout"> 
+                        ${heroTroopsLayoutArray[0]}
+                    </div>
+                    ${heroTroopDetailsArray[0]}
+                </div>`
     }
 
     getHeroCreatureArray(){
@@ -69,6 +75,25 @@ class Hero{
             new Creature(getRandomObjectFromData(creatureStats))
         )
     }
+
+    getHeroTroopsDetailsHtml(creatureIndex){
+        
+        const heroTroopsLayoutArray = this.troops.map((troopObject, index) => 
+                troopObject.getTroopsLayoutArrayHtml(index, this)
+            )
+
+        const heroTroopDetailsArray = this.troops.map((troopObject) =>
+            troopObject.getTroopDetailsHtml()
+        )
+
+        document.getElementById(`${this.name}Troops`).innerHTML = `
+            <div id="creaturesLayout" class="creatures-layout"> 
+                ${heroTroopsLayoutArray[creatureIndex-1]}
+            </div>
+            ${heroTroopDetailsArray[creatureIndex-1]}`
+    }
+
+
 
 }
 

@@ -179,6 +179,7 @@ footer * {
   border: 1px solid #292c31;
   height: 65px;
   width: 65px;
+  margin: 0.5rem;
   border-radius: 5px;
 }
 
@@ -692,4 +693,3 @@ button {
             transform: translateY(-50%) scale(1.05) rotate(-90deg);
   }
 }
-/*# sourceMappingURL=index.css.map */

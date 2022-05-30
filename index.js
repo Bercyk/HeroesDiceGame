@@ -7,10 +7,22 @@ const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 
 document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtml()
 
-console.log(heroCard1)
 
+document.getElementById(`${heroCard1.name}Creature1`).addEventListener("click", function(){
+    heroCard1.getHeroTroopsDetailsHtml(1)
+})
 
+document.getElementById(`${heroCard1.name}Creature2`).addEventListener("click", function(){
+    heroCard1.getHeroTroopsDetailsHtml(2)
+})
 
+document.getElementById(`${heroCard1.name}Creature3`).addEventListener("click", function(){
+    heroCard1.getHeroTroopsDetailsHtml(3)
+})
+
+document.getElementById(`${heroCard1.name}Creature4`).addEventListener("click", function(){
+    heroCard1.getHeroTroopsDetailsHtml(4)
+})
 /////////////////////////////////////////////////////////////////////////
 //getting random object from data
 // const randomHero1 = getRandomObjectFromData(heroStats)

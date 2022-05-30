@@ -68,7 +68,7 @@ class Creature{
                 </div>`
     }
 
-    getTroopsLayoutHtml(indexTroopsLayout, heroData){
+    getTroopsLayoutArrayHtml(indexTroopsLayout, heroData){
 
         let troopArrayElement = new Array(heroData.troops.length).fill(0).map((element, index) =>
             this.getCreatureHtml(index, heroData)
@@ -91,22 +91,6 @@ class Creature{
         }
         
         return troopArrayElement.join("")
-
-        // this.troopsPlaceholder = this.troops.map((number, index) => 
-        //     `<div id="${this.name}creature${index+1}"class="creature-placeholder">
-        //         <img class="creature-avatar" src="${number.avatar}">
-        //     </div>`
-        // )
-        // if(this.isDefaultRender){
-        //     this.troopsPlaceholder[0] = `<div id="${this.name}creature${1}"class="creature-placeholder">
-        //     <img class="creature-avatar creature-selected" src="${this.troops[0].avatar}">
-        //     </div>`
-        //     this.isDefaultRender = false;
-        // }
-
-        // this.troopsPlaceholder.join("")
-
-
     }
 }
 
