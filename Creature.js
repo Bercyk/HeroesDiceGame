@@ -54,7 +54,7 @@ class Creature{
 
         const {name, troops} = heroData
 
-        return `<div id="${name}Creature${index+1}" class="creature-placeholder">
+        return `<div id="${name}Creature${index}" class="creature-placeholder">
                     <img class="creature-avatar creature-selected" src="${troops[index].avatar}">
                 </div>`
     }
@@ -63,7 +63,7 @@ class Creature{
 
         const {name, troops} = heroData
 
-        return `<div id="${name}Creature${index+1}" class="creature-placeholder">
+        return `<div id="${name}Creature${index}" class="creature-placeholder">
                     <img class="creature-avatar" src="${troops[index].avatar}">
                 </div>`
     }

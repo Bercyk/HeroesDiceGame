@@ -12,6 +12,10 @@ class Hero{
         this.isDefaultRender = true;
     }
 
+    getHeroName(){
+        return this.name
+    }
+
     getHealthBarHtml(){
         const percent = getPercentage(this.health, this.maxHealth)
         return `<div class="health-bar-outer">
@@ -30,7 +34,7 @@ class Hero{
         const heroHealthBar = this.getHealthBarHtml()
 
         return `
-            <div id="${name.replace(/\s+/g, '')}" class="hero-container">
+            <div id="heroPlayer1" class="hero-container">
                 <h2 class="hero-name" >${name}</h2>
                 <div class="hero-details">
                     <img class="hero-avatar" src="${avatar}"/>                   
@@ -60,13 +64,15 @@ class Hero{
             troopObject.getTroopDetailsHtml()
         )
 
+        //const test = this.getHeroTroopsDetailsHtml(0)
+
 
         return `${heroContainer}
                 <div id="${this.name}Troops" "class="troops-container"> 
                     <div id="creaturesLayout" class="creatures-layout"> 
                         ${heroTroopsLayoutArray[0]}
                     </div>
-                    ${heroTroopDetailsArray[0]}
+                    {test}
                 </div>`
     }
 
@@ -77,22 +83,32 @@ class Hero{
     }
 
     getHeroTroopsDetailsHtml(creatureIndex){
-        
-        const heroTroopsLayoutArray = this.troops.map((troopObject, index) => 
-                troopObject.getTroopsLayoutArrayHtml(index, this)
-            )
 
-        const heroTroopDetailsArray = this.troops.map((troopObject) =>
-            troopObject.getTroopDetailsHtml()
-        )
+    const heroTroopsLayoutArray = this.troops.map((troopObject, index) => 
+        troopObject.getTroopsLayoutArrayHtml(index, this)
+    )
 
-        document.getElementById(`${this.name}Troops`).innerHTML = `
-            <div id="creaturesLayout" class="creatures-layout"> 
-                ${heroTroopsLayoutArray[creatureIndex-1]}
-            </div>
-            ${heroTroopDetailsArray[creatureIndex-1]}`
+    const heroTroopDetailsArray = this.troops.map((troopObject) =>
+        troopObject.getTroopDetailsHtml()
+    )
+          
+    document.getElementById(this.name + "Troops").innerHTML = `
+                        <div id="creaturesLayout" class="creatures-layout"> 
+                             ${heroTroopsLayoutArray[creatureIndex]}
+                        </div>
+                            ${heroTroopDetailsArray[creatureIndex]}`
+
+    this.getTroopEventListeners()
     }
 
+    getTroopEventListeners(){
+        for(let i = 0; i < this.troopsCount; i++){
+            
+            document.getElementById(this.name+"Creature"+i).addEventListener("click", function(){
+                console.log("here")       
+            })
+        }
+    }
 
 
 }
