@@ -12,8 +12,10 @@ class Hero{
         this.isDefaultRender = true;
     }
 
-    getHeroName(){
-        return this.name
+    getHeroCreatureArray(){
+        return new Array(this.troopsCount).fill(0).map(() =>
+            new Creature(getRandomObjectFromData(creatureStats))
+        )
     }
 
     getHealthBarHtml(){
@@ -51,6 +53,41 @@ class Hero{
             `
     }
 
+    getHeroTroopsDetailsHtml(creatureIndex){
+
+        const heroTroopsLayoutArray = this.troops.map((troopObject, index) => 
+            troopObject.getTroopsLayoutArrayHtml(index, this)
+        )
+    
+        const heroTroopDetailsArray = this.troops.map((troopObject) =>
+            troopObject.getTroopDetailsHtml()
+        )
+              
+        document.getElementById(this.name + "Troops").innerHTML = `
+                            <div id="creaturesLayout" class="creatures-layout"> 
+                                 ${heroTroopsLayoutArray[creatureIndex]}
+                            </div>
+                                ${heroTroopDetailsArray[creatureIndex]}`
+    
+        this.getTroopEventListeners(heroTroopsLayoutArray, heroTroopDetailsArray)
+    }
+
+    getTroopEventListeners(heroTroopsLayoutArray, heroTroopDetailsArray){
+        
+        const heroName = this.name
+        
+        for(let i = 0; i < this.troopsCount; i++){
+            
+            document.getElementById(heroName+"Creature"+i).addEventListener("click", function(){
+                document.getElementById(heroName + "Troops").innerHTML = `
+                <div id="creaturesLayout" class="creatures-layout"> 
+                     ${heroTroopsLayoutArray[i]}
+                </div>
+                    ${heroTroopDetailsArray[i]}`
+            })
+        }
+    }
+
     getPlayerCardHtml(){
 
         const heroContainer = this.getHeroContainerHtml()
@@ -64,52 +101,15 @@ class Hero{
             troopObject.getTroopDetailsHtml()
         )
 
-        //const test = this.getHeroTroopsDetailsHtml(0)
-
 
         return `${heroContainer}
                 <div id="${this.name}Troops" "class="troops-container"> 
                     <div id="creaturesLayout" class="creatures-layout"> 
                         ${heroTroopsLayoutArray[0]}
                     </div>
-                    {test}
+                    ${heroTroopDetailsArray[0]}
                 </div>`
     }
-
-    getHeroCreatureArray(){
-        return new Array(this.troopsCount).fill(0).map(() =>
-            new Creature(getRandomObjectFromData(creatureStats))
-        )
-    }
-
-    getHeroTroopsDetailsHtml(creatureIndex){
-
-    const heroTroopsLayoutArray = this.troops.map((troopObject, index) => 
-        troopObject.getTroopsLayoutArrayHtml(index, this)
-    )
-
-    const heroTroopDetailsArray = this.troops.map((troopObject) =>
-        troopObject.getTroopDetailsHtml()
-    )
-          
-    document.getElementById(this.name + "Troops").innerHTML = `
-                        <div id="creaturesLayout" class="creatures-layout"> 
-                             ${heroTroopsLayoutArray[creatureIndex]}
-                        </div>
-                            ${heroTroopDetailsArray[creatureIndex]}`
-
-    this.getTroopEventListeners()
-    }
-
-    getTroopEventListeners(){
-        for(let i = 0; i < this.troopsCount; i++){
-            
-            document.getElementById(this.name+"Creature"+i).addEventListener("click", function(){
-                console.log("here")       
-            })
-        }
-    }
-
 
 }
 

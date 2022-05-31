@@ -9,7 +9,7 @@ document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtm
 
 for(let i=0; i < heroCard1.troops.length; i++){
 
-    let heroName = heroCard1.getHeroName()
+    let heroName = heroCard1.name
 
     document.getElementById(heroName+"Creature"+i).addEventListener("click",function(){
             heroCard1.getHeroTroopsDetailsHtml(i)
