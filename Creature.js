@@ -50,47 +50,22 @@ class Creature{
         ).join("")
     }
 
-    getCreatureSelectedHtml(index, heroData){
+    getCreatureSelectedHtml(selectedCreatureIndex, heroData){
 
-        const {name, troops} = heroData
-
-        return `<div id="${name}Creature${index}" class="creature-placeholder">
-                    <img class="creature-avatar creature-selected" src="${troops[index].avatar}">
-                </div>`
+        for(let i=0; i<heroData.troopsCount; i++){
+            document.getElementById(heroData.name+"Creature"+i).classList = "creature-placeholder"
+        }
+        
+        return document.getElementById(heroData.name+"Creature"+selectedCreatureIndex).classList = "creature-placeholder creature-selected"
     }
 
     getCreatureHtml(index, heroData){
 
         const {name, troops} = heroData
 
-        return `<div id="${name}Creature${index}" class="creature-placeholder">
+        return `<div id="${name}Creature${index}" class="creature-placeholder ${index === 0 ? `creature-selected` : ""}">
                     <img class="creature-avatar" src="${troops[index].avatar}">
                 </div>`
-    }
-
-    getTroopsLayoutArrayHtml(indexTroopsLayout, heroData){
-
-        let troopArrayElement = new Array(heroData.troops.length).fill(0).map((element, index) =>
-            this.getCreatureHtml(index, heroData)
-            )
-
-        switch(indexTroopsLayout){
-
-            case 0:
-                troopArrayElement[0] = this.getCreatureSelectedHtml(0,heroData)
-            break;
-            case 1:
-                troopArrayElement[1] = this.getCreatureSelectedHtml(1,heroData)
-            break;
-            case 2:
-                troopArrayElement[2] = this.getCreatureSelectedHtml(2,heroData)
-            break;
-            case 3:
-                troopArrayElement[3] = this.getCreatureSelectedHtml(3,heroData)
-            break;
-        }
-        
-        return troopArrayElement.join("")
     }
 }
 
