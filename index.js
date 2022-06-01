@@ -1,10 +1,14 @@
 import heroStats from "./data/dataHeroes.js"
 import {getRandomObjectFromData} from "./utils.js"
 import Hero from "./Hero.js"
+import GameTable from "./GameTable.js"
 
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
 
+const gameTable1 = new GameTable(heroCard1)
+
+console.log(heroCard1)
 
 
 function render(){
@@ -13,6 +17,8 @@ function render(){
     
     heroCard1.getCreaturesEventListeners()
     heroCard2.getCreaturesEventListeners()
+
+    document.getElementById("player1Deck").innerHTML = gameTable1.getPlayerDeckHtml(heroCard1)
 
     // getCreaturesEventListeners(heroCard1)
     // getCreaturesEventListeners(heroCard2)

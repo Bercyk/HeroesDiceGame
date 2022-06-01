@@ -1,6 +1,6 @@
 import Creature from "./Creature.js"
 import creatureStats from "./data/dataCreatures.js"
-import {getPercentage, getRandomObjectFromData, getTroopsPlaceholderHtml} from "./utils.js"
+import {getPercentage, getRandomObjectFromData} from "./utils.js"
 
 class Hero{
 
