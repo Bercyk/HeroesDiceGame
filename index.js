@@ -9,12 +9,14 @@ document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtm
 
 for(let i=0; i < heroCard1.troops.length; i++){
 
-    let heroName = heroCard1.name
-
-    document.getElementById(heroName+"Creature"+i).addEventListener("click",function(){
+    document.getElementById("Player"+heroCard1.instanceId+"Creature"+i).addEventListener("click",function(){
             heroCard1.updateHeroTroops(i)
     })
 }
+
+// console.dir(heroCard1)
+
+// console.log(heroCard1.instanceId)
 
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
 
@@ -23,9 +25,11 @@ document.getElementById("player2Card-El").innerHTML = heroCard2.getPlayerCardHtm
 
 for(let i=0; i < heroCard2.troops.length; i++){
 
-    let heroName = heroCard2.name
-
-    document.getElementById(heroName+"Creature"+i).addEventListener("click",function(){
+    document.getElementById("Player"+heroCard2.instanceId+"Creature"+i).addEventListener("click",function(){
             heroCard2.updateHeroTroops(i)
     })
 }
+
+// console.dir(heroCard2)
+
+// console.log(heroCard2.instanceId)

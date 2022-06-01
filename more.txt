@@ -85,3 +85,53 @@ damage to hero {
             </div>
         </div>      
     </div> -->
+
+
+    "<div class=\"creatures-details\">\n
+        <div class=\"creatures-stats\">\n
+         <div class=\"stat-icon\">\n
+
+         <img class=\"icon\" src=\"images/Icons/dmg.png\">\n 
+<p id=\"damage\">: 40-50</p>\n
+</div>\n
+<div class=\"stat-icon\">\n
+<img class=\"icon\" src=\"images/Icons/def.png\">\n
+<p id=\"defense\">: 35</p>\n
+</div>\n
+<div class=\"stat-icon\">\n
+<img class=\"icon\" src=\"images/Icons/HP.png\">\n
+<p id=\"healthPoint\">: 235</p>\n
+</div>\n
+<div class=\"stat-icon\">\n
+<img class=\"icon\" src=\"images/Icons/chance.png\">\n
+<p id=\"chanceRatio\">: 50%</p>\n
+</div>\n
+</div>\n
+<div class=\"creatures-description\">\n
+<h2 id=\"creatureName\">Black Dragon</h2>\n
+<div class=\"creatures-dice-container\">\n
+<img class=\"creature-dice\" src=\"images/Icons/dice.png\"><img class=\"creature-dice\" src=\"images/Icons/dice.png\"><img class=\"creature-dice\" src=\"images/Icons/dice.png\">\n                        </div>\n                        <button class=\"btn btn-selectCreature\" id=\"selectCreatureBtn\">Select creature</button>\n                    </div>\n                </div>\n
+
+
+"<div class=\"creatures-details\">\n
+<div class=\"creatures-stats\">\n
+<div class=\"stat-icon\">\n
+<img class=\"icon\" src=\"images/Icons/dmg.png\">\n
+<p id=\"damage\">: 48-50</p>\n
+</div>\n
+<div class=\"stat-icon\">\n
+<img class=\"icon\" src=\"images/Icons/def.png\">\n
+<p id=\"defense\">: 28</p>\n                   
+     </div>\n
+     <div class=\"stat-icon\">\n
+     <img class=\"icon\" src=\"images/Icons/HP.png\">\n
+     <p id=\"healthPoint\">: 200</p>\n
+     </div>\n                   
+          <div class=\"stat-icon\">\n
+          <img class=\"icon\" src=\"images/Icons/chance.png\">\n
+          <p id=\"chanceRatio\">: 45%</p>\n
+          </div>\n
+          </div>\n
+          <div class=\"creatures-description\">\n
+          <h2 id=\"creatureName\">Arch Devil</h2>\n
+          <div class=\"creatures-dice-container\">\n                            <img class=\"creature-dice\" src=\"images/Icons/dice.png\"><img class=\"creature-dice\" src=\"images/Icons/dice.png\"><img class=\"creature-dice\" src=\"images/Icons/dice.png\">\n                        </div>\n                        <button class=\"btn btn-selectCreature\" id=\"selectCreatureBtn\">Select creature</button>\n                    </div>\n                </div>\n                "

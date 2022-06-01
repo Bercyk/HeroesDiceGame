@@ -53,17 +53,17 @@ class Creature{
     getCreatureSelectedHtml(selectedCreatureIndex, heroData){
 
         for(let i=0; i<heroData.troopsCount; i++){
-            document.getElementById(heroData.name+"Creature"+i).classList = "creature-placeholder"
+            document.getElementById("Player"+heroData.instanceId+"Creature"+i).classList = "creature-placeholder"
         }
         
-        return document.getElementById(heroData.name+"Creature"+selectedCreatureIndex).classList = "creature-placeholder creature-selected"
+        return document.getElementById("Player"+heroData.instanceId+"Creature"+selectedCreatureIndex).classList = "creature-placeholder creature-selected"
     }
 
     getCreatureHtml(index, heroData){
 
-        const {name, troops} = heroData
+        const {troops, instanceId} = heroData
 
-        return `<div id="${name}Creature${index}" class="creature-placeholder ${index === 0 ? `creature-selected` : ""}">
+        return `<div id="Player${instanceId}Creature${index}" class="creature-placeholder ${index === 0 ? `creature-selected` : ""}">
                     <img class="creature-avatar" src="${troops[index].avatar}">
                 </div>`
     }

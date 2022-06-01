@@ -79,7 +79,7 @@ const heroStats = {
         avatar: "images/Heroes/Hero_Lord_Haart_Death_Knight.png",
         health: 80,
         troops: [],
-        troopsCount: 1,
+        troopsCount: 2,
         attack: 5,
         specialties: ["Ressurection"]
     },

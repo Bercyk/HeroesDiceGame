@@ -3,11 +3,15 @@ import creatureStats from "./data/dataCreatures.js"
 import {getPercentage, getRandomObjectFromData, getTroopsPlaceholderHtml} from "./utils.js"
 
 class Hero{
-    constructor(dataHero){
-        Object.assign(this, dataHero)
 
+    static count = 1
+
+    constructor(dataHero){
+        
+        Object.assign(this, dataHero)
         this.maxHealth = this.health       
         this.troops = this.getHeroCreatureArray()
+        this.instanceId = Hero.count++
         
     }
 
@@ -30,12 +34,12 @@ class Hero{
     getHeroContainerHtml(){
         const {name, heroClass, 
             avatar, health,
-            attack, specialties} = this
+            attack, specialties, instanceId} = this
 
         const heroHealthBar = this.getHealthBarHtml()
 
         return `
-            <div id="heroPlayer1" class="hero-container">
+            <div id="Player${instanceId}hero" class="hero-container">
                 <h2 class="hero-name" >${name}</h2>
                 <div class="hero-details">
                     <img class="hero-avatar" src="${avatar}"/>                   
@@ -55,7 +59,6 @@ class Hero{
     getPlayerCardHtml(){
 
         const heroContainer = this.getHeroContainerHtml()
-        //TODO: hero troops
 
 
         const heroCreaturesLayoutHtml = this.troops.map((troopObject, index) => 
@@ -67,11 +70,11 @@ class Hero{
         )
         
         return `${heroContainer}
-                <div id="${this.name}Troops" "class="troops-container"> 
-                    <div id="creaturesLayout" class="creatures-layout"> 
+                <div id="Player${this.instanceId}Troops" "class="troops-container"> 
+                    <div id="Player${this.instanceId}CreaturesLayout" class="creatures-layout"> 
                         ${heroCreaturesLayoutHtml}
                     </div>
-                    <div id="creatureDescription${this.name}">
+                    <div id="Player${this.instanceId}CreatureDescription">
                     ${heroTroopDetailsArray[0]}
                     </div>
                 </div>`
@@ -82,10 +85,10 @@ class Hero{
         this.troops[creatureIndex].getCreatureSelectedHtml(creatureIndex, this)
 
         const heroTroopDetailsArray = this.troops.map((troopObject) =>
-        troopObject.getTroopDetailsHtml()
+            troopObject.getTroopDetailsHtml()
         )
 
-        document.getElementById("creatureDescription"+this.name).innerHTML = heroTroopDetailsArray[creatureIndex]
+        document.getElementById("Player"+this.instanceId+"CreatureDescription").innerHTML = heroTroopDetailsArray[creatureIndex]
 
     }
 
