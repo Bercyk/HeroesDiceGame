@@ -6,6 +6,30 @@ class Creature{
         this.maxHealth = this.health
     }
 
+    getCreatureDiceIconsHtml(creatureDiceCount){
+        return new Array(creatureDiceCount).fill(0).map(() =>
+            `<img class="creature-dice" src="images/Icons/dice.png">`
+        ).join("")
+    }
+
+    getSelectedCreatureStyle(selectedCreatureIndex, heroData){
+        // clean previous selection
+        for(let i=0; i<heroData.troopsCount; i++){
+            document.getElementById("Player"+heroData.instanceId+"Creature"+i).classList = "creature-placeholder"
+        }
+        
+        return document.getElementById("Player"+heroData.instanceId+"Creature"+selectedCreatureIndex).classList = "creature-placeholder creature-selected"
+    }
+
+    getCreatureHtml(index, heroData){
+
+        const {troops, instanceId} = heroData
+
+        return `<div id="Player${instanceId}Creature${index}" class="creature-placeholder ${index === 0 ? `creature-selected` : ""}">
+                    <img class="creature-avatar" src="${troops[index].avatar}">
+                </div>`
+    }
+
     getTroopDetailsHtml(){
 
         const {name, 
@@ -44,29 +68,6 @@ class Creature{
                 `
     }
 
-    getCreatureDiceIconsHtml(creatureDiceCount){
-        return new Array(creatureDiceCount).fill(0).map(() =>
-            `<img class="creature-dice" src="images/Icons/dice.png">`
-        ).join("")
-    }
-
-    getCreatureSelectedHtml(selectedCreatureIndex, heroData){
-
-        for(let i=0; i<heroData.troopsCount; i++){
-            document.getElementById("Player"+heroData.instanceId+"Creature"+i).classList = "creature-placeholder"
-        }
-        
-        return document.getElementById("Player"+heroData.instanceId+"Creature"+selectedCreatureIndex).classList = "creature-placeholder creature-selected"
-    }
-
-    getCreatureHtml(index, heroData){
-
-        const {troops, instanceId} = heroData
-
-        return `<div id="Player${instanceId}Creature${index}" class="creature-placeholder ${index === 0 ? `creature-selected` : ""}">
-                    <img class="creature-avatar" src="${troops[index].avatar}">
-                </div>`
-    }
 }
 
 export default Creature
