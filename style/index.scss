@@ -88,11 +88,11 @@ button {
     }
 
     .table-container{
-        transform: rotate(90deg);
+        transform: rotate(-90deg);
     }
 
     .deck-placeholder{
-        transform: rotate(-90deg);
+        transform: rotate(90deg);
     }
 
     .table-deck{
@@ -100,19 +100,19 @@ button {
     }
 
     .btn-spell{
-        transform: rotate(-90deg);
+        transform: rotate(90deg);
         &:active{
-            transform: rotate(-90deg) scale(1.1);
+            transform: rotate(90deg) scale(1.1);
         }
     }
 
     .btn-fight{
-        transform: translateY(-50%) rotate(-90deg);
+        transform: translateY(-50%) rotate(90deg);
         top: $tableHeight*0.5;
-        left: $tableWidth*0.85;
+        left: $tableWidth*-0.5;
 
         &:active{
-            transform: translateY(-50%)  scale(1.05) rotate(-90deg);
+            transform: translateY(-50%)  scale(1.05) rotate(90deg);
         }
     }
 

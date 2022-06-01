@@ -85,6 +85,7 @@ footer * {
   width: 308px;
   min-width: 308px;
   height: 495px;
+  position: relative;
 }
 
 .hero-container {
@@ -162,7 +163,6 @@ footer * {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 20px;
 }
 
 .creatures-layout {
@@ -216,6 +216,7 @@ footer * {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 1rem;
+  min-width: 308px;
 }
 
 .creatures-stats,
@@ -249,9 +250,9 @@ footer * {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .creatures-dice-container {
@@ -271,6 +272,11 @@ footer * {
 }
 
 .btn-selectCreature {
+  position: absolute;
+  top: 430px;
+  left: 165px;
+  width: 150px;
+  height: 70px;
   background-image: url("../images/Background/wooden.jpg");
   background-position: center;
   background-size: cover;
@@ -340,6 +346,14 @@ footer * {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 0.5rem;
   border-radius: 5px;
+  height: 80px;
+  width: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .creature-fight-status {
@@ -350,6 +364,11 @@ footer * {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .creature-fight-avatar {
@@ -466,6 +485,10 @@ footer * {
 
 .action-icon {
   padding: 0.5rem;
+  max-width: 44px;
+  max-height: 44px;
+  width: 44px;
+  height: 44px;
 }
 
 .dice {
@@ -660,12 +683,12 @@ button {
             align-items: center;
   }
   .table-container {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
-  }
-  .deck-placeholder {
     -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg);
+  }
+  .deck-placeholder {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
   }
   .table-deck {
     -webkit-box-pack: center;
@@ -673,22 +696,22 @@ button {
             justify-content: center;
   }
   .btn-spell {
-    -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
   }
   .btn-spell:active {
-    -webkit-transform: rotate(-90deg) scale(1.1);
-            transform: rotate(-90deg) scale(1.1);
+    -webkit-transform: rotate(90deg) scale(1.1);
+            transform: rotate(90deg) scale(1.1);
   }
   .btn-fight {
-    -webkit-transform: translateY(-50%) rotate(-90deg);
-            transform: translateY(-50%) rotate(-90deg);
+    -webkit-transform: translateY(-50%) rotate(90deg);
+            transform: translateY(-50%) rotate(90deg);
     top: 250px;
-    left: 255px;
+    left: -150px;
   }
   .btn-fight:active {
-    -webkit-transform: translateY(-50%) scale(1.05) rotate(-90deg);
-            transform: translateY(-50%) scale(1.05) rotate(-90deg);
+    -webkit-transform: translateY(-50%) scale(1.05) rotate(90deg);
+            transform: translateY(-50%) scale(1.05) rotate(90deg);
   }
 }
 /*# sourceMappingURL=index.css.map */

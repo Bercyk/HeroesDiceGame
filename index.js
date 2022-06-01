@@ -11,19 +11,27 @@ function render(){
     document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtml()
     document.getElementById("player2Card-El").innerHTML = heroCard2.getPlayerCardHtml()
     
-    getEventListeners(heroCard1)
-    getEventListeners(heroCard2)
+    heroCard1.getCreaturesEventListeners()
+    heroCard2.getCreaturesEventListeners()
+
+    // getCreaturesEventListeners(heroCard1)
+    // getCreaturesEventListeners(heroCard2)
 }
 
 
-function getEventListeners(card){
+// function getCreaturesEventListeners(card){
     
-    for(let i=0; i < card.troops.length; i++){
+//     for(let i=0; i < card.troops.length; i++){
+//         document.getElementById("Player"+card.instanceId+"Creature"+i).addEventListener("click",function(){
+//             card.getUpdateHeroTroopsHtml(i)
+//         })
+//     }
+// }
 
-        document.getElementById("Player"+card.instanceId+"Creature"+i).addEventListener("click",function(){
-            card.getUpdateHeroTroopsHtml(i)
-        })
-    }
-}
+
+
+
+
+
 
 render()

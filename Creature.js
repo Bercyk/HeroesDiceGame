@@ -38,31 +38,28 @@ class Creature{
 
         const creatureDice  = this.getCreatureDiceIconsHtml(diceCount)
 
-        return `<div class="creatures-details">
-                    <div class="creatures-stats">
-                        <div class="stat-icon">
-                            <img class="icon" src="images/Icons/dmg.png">
-                            <p id="damage">: ${damageMin}-${damageMax}</p>
-                        </div>
-                        <div class="stat-icon">
-                            <img class="icon" src="images/Icons/def.png">
-                            <p id="defense">: ${defense}</p>
-                        </div>
-                        <div class="stat-icon">
-                            <img class="icon" src="images/Icons/HP.png">
-                            <p id="healthPoint">: ${health}</p>
-                        </div>
-                        <div class="stat-icon">
-                            <img class="icon" src="images/Icons/chance.png">
-                            <p id="chanceRatio">: ${chanceRatio}%</p>
-                        </div>
+        return `<div class="creatures-stats">
+                    <div class="stat-icon">
+                        <img class="icon" src="images/Icons/dmg.png">
+                        <p id="damage">: ${damageMin}-${damageMax}</p>
                     </div>
-                    <div class="creatures-description">
-                        <h2 id="creatureName">${name}</h2>
-                        <div class="creatures-dice-container">
-                            ${creatureDice}
-                        </div>
-                        <button class="btn btn-selectCreature" id="selectCreatureBtn">Select creature</button>
+                    <div class="stat-icon">
+                        <img class="icon" src="images/Icons/def.png">
+                        <p id="defense">: ${defense}</p>
+                    </div>
+                    <div class="stat-icon">
+                        <img class="icon" src="images/Icons/HP.png">
+                        <p id="healthPoint">: ${health}</p>
+                    </div>
+                    <div class="stat-icon">
+                        <img class="icon" src="images/Icons/chance.png">
+                        <p id="chanceRatio">: ${chanceRatio}%</p>
+                    </div>
+                </div>
+                <div class="creatures-description">
+                    <h2 id="creatureName">${name}</h2>
+                    <div class="creatures-dice-container">
+                        ${creatureDice}
                     </div>
                 </div>
                 `

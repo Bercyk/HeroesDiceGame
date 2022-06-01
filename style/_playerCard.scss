@@ -10,6 +10,7 @@
     width: 308px;
     min-width: 308px;
     height: 495px;
+    position: relative;
 
 }
 
@@ -71,7 +72,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 }
 
 .creatures-layout{
@@ -92,7 +92,6 @@
     size: 65px;
     border-radius: $borderSmallRadius*0.75;
     
-
     &:hover,
     :focus,
     :active{
@@ -119,6 +118,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: $standardSpacing;
+    min-width: 308px;
 }
 
 .creatures-stats,
@@ -141,13 +141,12 @@
 
 .creatures-description{
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .creatures-dice-container{
     padding: $standardSpacing 0;
     display: flex;
-    //width: 120px;
     justify-content: space-around;
     margin-bottom: $standardSpacing;
 }
@@ -159,6 +158,11 @@
 }
 
 .btn-selectCreature {
+    position: absolute;
+    top: 430px;
+    left: 165px;
+    width: 150px;
+    height: 70px;
     background-image: url("../images/Background/wooden.jpg");
     background-position: center;
     background-size: cover;

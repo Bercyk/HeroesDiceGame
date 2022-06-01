@@ -78,22 +78,33 @@ class Hero{
 
     }
 
+    getCreaturesEventListeners(){
+
+        for(let i=0; i < this.troops.length; i++){
+            document.getElementById("Player"+this.instanceId+"Creature"+i).addEventListener("click",() =>
+                this.getUpdateHeroTroopsHtml(i)
+                )
+        }
+    }
+
     getPlayerCardHtml(){
 
         const instanceId = this.instanceId
-        const heroContainer = this.getHeroContainerHtml()
+        const heroContainerHtml = this.getHeroContainerHtml()
         const heroCreaturesLayoutHtml = this.getHeroCreaturesLayoutHtml()
         const heroTroopDetailsArray = this.getHeroTroopDetailsArray()
 
-        return `${heroContainer}
+        return `${heroContainerHtml}
                 <div id="Player${instanceId}Troops" "class="troops-container"> 
                     <div id="Player${instanceId}CreaturesLayout" class="creatures-layout"> 
                         ${heroCreaturesLayoutHtml}
                     </div>
-                    <div id="Player${instanceId}CreatureDescription">
+                    <div id="Player${instanceId}CreatureDescription" class="creatures-details">
                     ${heroTroopDetailsArray[0]}
                     </div>
-                </div>`
+                </div>
+                <button class="btn btn-selectCreature" id="Player${instanceId}selectCreatureBtn">Select creature</button>
+                `
     }
 
 
