@@ -15,17 +15,17 @@ class Creature{
     getSelectedCreatureStyle(selectedCreatureIndex, heroData){
         // clean previous selection
         for(let i=0; i<heroData.troopsCount; i++){
-            document.getElementById("Player"+heroData.instanceId+"Creature"+i).classList = "creature-placeholder"
+            document.getElementById("Player"+heroData.heroInstanceId+"Creature"+i).classList = "creature-placeholder"
         }
         
-        return document.getElementById("Player"+heroData.instanceId+"Creature"+selectedCreatureIndex).classList = "creature-placeholder creature-selected"
+        return document.getElementById("Player"+heroData.heroInstanceId+"Creature"+selectedCreatureIndex).classList = "creature-placeholder creature-selected"
     }
 
     getCreatureHtml(index, heroData){
 
-        const {troops, instanceId} = heroData
+        const {troops, heroInstanceId} = heroData
 
-        return `<div id="Player${instanceId}Creature${index}" class="creature-placeholder ${index === 0 ? `creature-selected` : ""}">
+        return `<div id="Player${heroInstanceId}Creature${index}" class="creature-placeholder ${index === 0 ? `creature-selected` : ""}">
                     <img class="creature-avatar" src="${troops[index].avatar}">
                 </div>`
     }

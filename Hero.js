@@ -11,7 +11,7 @@ class Hero{
         Object.assign(this, dataHero)
         this.maxHealth = this.health       
         this.troops = this.getHeroCreatureArray()
-        this.instanceId = Hero.count++
+        this.heroInstanceId = Hero.count++
         
     }
 
@@ -21,7 +21,7 @@ class Hero{
         )
     }
 
-    getHealthBarHtml(){
+    getHeroHealthBarHtml(){
         const percent = getPercentage(this.health, this.maxHealth)
         return `<div class="health-bar-outer">
                     <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
@@ -34,12 +34,12 @@ class Hero{
     getHeroContainerHtml(){
         const {name, heroClass, 
             avatar, health,
-            attack, specialties, instanceId} = this
+            attack, specialties, heroInstanceId} = this
 
-        const heroHealthBar = this.getHealthBarHtml()
+        const heroHealthBar = this.getHeroHealthBarHtml()
 
         return `
-            <div id="Player${instanceId}hero" class="hero-container">
+            <div id="Player${heroInstanceId}hero" class="hero-container">
                 <h2 class="hero-name" >${name}</h2>
                 <div class="hero-details">
                     <img class="hero-avatar" src="${avatar}"/>                   
@@ -74,14 +74,14 @@ class Hero{
 
         const heroTroopDetailsArray = this.getHeroTroopDetailsArray()
 
-        document.getElementById("Player"+this.instanceId+"CreatureDescription").innerHTML = heroTroopDetailsArray[creatureIndex]
+        document.getElementById("Player"+this.heroInstanceId+"CreatureDescription").innerHTML = heroTroopDetailsArray[creatureIndex]
 
     }
 
     getCreaturesEventListeners(){
 
         for(let i=0; i < this.troops.length; i++){
-            document.getElementById("Player"+this.instanceId+"Creature"+i).addEventListener("click",() =>
+            document.getElementById("Player"+this.heroInstanceId+"Creature"+i).addEventListener("click",() =>
                 this.getUpdateHeroTroopsHtml(i)
                 )
         }
@@ -89,7 +89,7 @@ class Hero{
 
     getPlayerCardHtml(){
 
-        const instanceId = this.instanceId
+        const instanceId = this.heroInstanceId
         const heroContainerHtml = this.getHeroContainerHtml()
         const heroCreaturesLayoutHtml = this.getHeroCreaturesLayoutHtml()
         const heroTroopDetailsArray = this.getHeroTroopDetailsArray()
@@ -103,7 +103,7 @@ class Hero{
                     ${heroTroopDetailsArray[0]}
                     </div>
                 </div>
-                <button class="btn btn-selectCreature" id="Player${instanceId}selectCreatureBtn">Select creature</button>
+                <button class="btn btn-selectCreature" id="Player${instanceId}SelectCreatureBtn">Select creature</button>
                 `
     }
 

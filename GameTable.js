@@ -11,45 +11,79 @@ class GameTable{
         
         Object.assign(this, heroCard)
         //this.fightingCreature = this.getFightCreatureHtml()
-        //this.attackSpell = this.getAttackSpellHtml()
+        this.attackSpell = this.specialties[0]
+        this.passiveSpell = this.specialties[1]
         //this.passiveSpell = this.getPassiveSpellHtml()
         
         //this.summaryAttackScore = this.getSummaryAttackScoreHtml()
-        
-        //this.fightingCreature = document.getElementByClassName("creature selected")
-        this.instanceId = GameTable.count++      
+        this.fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
 
-        //this.heroCard = heroCard1
+        this.creatureHealth = this.fightingCreature.health
+        this.creatureMaxHealth = this.fightingCreature.health
+
+        this.tableInstanceId = GameTable.count++
+
 
     }
 
+        getCreatureHealthBarHtml(){
+            const percent = getPercentage(this.creatureHealth, this.creatureMaxHealth)
+            return `<div class="health-bar-outer">
+                        <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
+                        style="width:${percent}%;">
+                        </div>
+                    </div>
+                    ` 
+        }
+
+        getChildIndexOfCreaturesLayout(){
+            const child = document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").querySelector(".creature-selected")
+            const parent = child.parentNode
+
+            return Array.prototype.indexOf.call(parent.children, child);
+        }
+
         getFightCreatureHtml(){
 
-            
+            const creatureHealthBar = this.getCreatureHealthBarHtml()
 
-            const fightingCreatureId = document.querySelector(".creature-selected").id
-            
-
-            console.dir(this)
-
-            return `<div id=${this.name} class="deck-placeholder">
+            return `<div id="Player${this.tableInstanceId}${this.name}" class="deck-placeholder">
                         <div class="creature-fight-status">
-                            <img class="creature-fight-avatar" src="images/Creatures/Air_Elemental_portrait.gif">
-                            <div class="health-bar-outer">
-                                <div class="health-bar-inner">
-                                </div>
-                            </div>
+                            <img class="creature-fight-avatar" src="${this.fightingCreature.avatar}">
+                            ${creatureHealthBar}
                         </div>
                     </div>
                     `
         }
 
+        // getSpellDetailsHtml(){
+            // TODO: create dataSpell and assign values
+        // }
+
+        getAttackSpellHtml(){
+            return `<button id="Player${this.heroInstanceId}AttackSpell" class="btn-spell">
+                        <p class="action-icon">🔥</p>
+                    </button>`
+        }
+
+        getPassiveSpellHtml(){
+            return `<button id="Player${this.heroInstanceId}PassiveSpell" class="btn-spell">
+                        <p class="action-icon">📖</p>
+                    </button>`
+        }
+
         getPlayerDeckHtml(){
 
-            const fightingCreature = this.getFightCreatureHtml()
+            const fightingCreatureHTML = this.getFightCreatureHtml()
+
+            const passiveSpellHtml = this.getPassiveSpellHtml()
+
+            const attackSpellHtml = this.getAttackSpellHtml()
 
             return `
-            ${fightingCreature}
+            ${attackSpellHtml}
+            ${fightingCreatureHTML}
+            ${passiveSpellHtml}
             `
         }
         

@@ -5,10 +5,8 @@ import GameTable from "./GameTable.js"
 
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
+let isGameTable = false
 
-const gameTable1 = new GameTable(heroCard1)
-
-console.log(heroCard1)
 
 
 function render(){
@@ -17,27 +15,29 @@ function render(){
     
     heroCard1.getCreaturesEventListeners()
     heroCard2.getCreaturesEventListeners()
+    isGameTable = true
 
-    document.getElementById("player1Deck").innerHTML = gameTable1.getPlayerDeckHtml(heroCard1)
+}
 
-    // getCreaturesEventListeners(heroCard1)
-    // getCreaturesEventListeners(heroCard2)
+render()
+
+if(isGameTable){
+
+    document.getElementById("Player1SelectCreatureBtn").addEventListener("click", () => {
+        const gameTable1 = new GameTable(heroCard1)
+        document.getElementById("player1Deck").innerHTML = gameTable1.getPlayerDeckHtml(heroCard1)
+    })
+
+    document.getElementById("Player2SelectCreatureBtn").addEventListener("click", () => {
+        const gameTable2 = new GameTable(heroCard2)
+        document.getElementById("player2Deck").innerHTML = gameTable2.getPlayerDeckHtml(heroCard1)
+    })
 }
 
 
-// function getCreaturesEventListeners(card){
-    
-//     for(let i=0; i < card.troops.length; i++){
-//         document.getElementById("Player"+card.instanceId+"Creature"+i).addEventListener("click",function(){
-//             card.getUpdateHeroTroopsHtml(i)
-//         })
-//     }
-// }
 
 
 
 
 
 
-
-render()
