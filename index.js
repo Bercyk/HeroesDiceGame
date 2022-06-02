@@ -5,8 +5,9 @@ import GameTable from "./GameTable.js"
 
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
-let isGameTable = false
 
+let gameTable1
+let gameTable2
 
 
 function render(){
@@ -15,24 +16,22 @@ function render(){
     
     heroCard1.getCreaturesEventListeners()
     heroCard2.getCreaturesEventListeners()
-    isGameTable = true
+
+
+    gameTable1 = new GameTable(heroCard1)
+    gameTable2 = new GameTable(heroCard2)
+    
+    gameTable1.getCreatureSelected()
+    gameTable2.getCreatureSelected()
+
+    // document.getElementById("btnAtt").addEventListener("click", () => {
+        
+    // })
 
 }
 
 render()
 
-if(isGameTable){
-
-    document.getElementById("Player1SelectCreatureBtn").addEventListener("click", () => {
-        const gameTable1 = new GameTable(heroCard1)
-        document.getElementById("player1Deck").innerHTML = gameTable1.getPlayerDeckHtml(heroCard1)
-    })
-
-    document.getElementById("Player2SelectCreatureBtn").addEventListener("click", () => {
-        const gameTable2 = new GameTable(heroCard2)
-        document.getElementById("player2Deck").innerHTML = gameTable2.getPlayerDeckHtml(heroCard1)
-    })
-}
 
 
 
