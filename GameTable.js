@@ -1,11 +1,8 @@
 import {getPercentage} from "./utils.js"
-import Creature from "./Creature.js"
-
-
 
 class GameTable{
 
-    static count = 1
+    //static count = 1
 
     constructor(heroCard){
         
@@ -13,16 +10,16 @@ class GameTable{
         //this.fightingCreature = this.getFightCreatureHtml()
         this.attackSpell = this.specialties[0]
         this.passiveSpell = this.specialties[1]
-        //this.passiveSpell = this.getPassiveSpellHtml()
-        this.tableInstanceId = GameTable.count++
+        //this.tableInstanceId = GameTable.count++
 
-
-
+        this.fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
+        this.fightingCreatureHealth = this.fightingCreature.health
+        this.fightingCreatureMaxHealth = this.fightingCreature.health
 
     }
 
-        getCreatureHealthBarHtml(creatureHealth, creatureMaxHealth){
-            const percent = getPercentage(creatureHealth, creatureMaxHealth)
+        getCreatureHealthBarHtml(){
+            const percent = getPercentage(this.fightingCreatureHealth, this.fightingCreatureMaxHealth)
             return `<div class="health-bar-outer">
                         <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
                         style="width:${percent}%;">
@@ -32,9 +29,9 @@ class GameTable{
         }
 
         getChildIndexOfCreaturesLayout(){
-            let creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
-
+            const creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
             return creatureIndex
+            
             // const child = document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").querySelector(" .creature-selected")
             // const parent = child.parentNode
 
@@ -43,15 +40,15 @@ class GameTable{
 
         getFightCreatureHtml(){
 
-            const fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
-            const creatureHealth =fightingCreature.health
-            const creatureMaxHealth = fightingCreature.health
+            // const fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
+            // const creatureHealth = fightingCreature.health
+            // const creatureMaxHealth = fightingCreature.health
 
-            const creatureHealthBar = this.getCreatureHealthBarHtml(creatureHealth, creatureMaxHealth)
+            const creatureHealthBar = this.getCreatureHealthBarHtml()
 
-            return `<div id="Player${this.tableInstanceId}${this.name}" class="deck-placeholder">
+            return `<div id="Player${this.heroInstanceId}${this.name}" class="deck-placeholder">
                         <div class="creature-fight-status">
-                            <img class="creature-fight-avatar" src="${fightingCreature.avatar}">
+                            <img class="creature-fight-avatar" src="${this.fightingCreature.avatar}">
                             ${creatureHealthBar}
                         </div>
                     </div>
@@ -59,7 +56,7 @@ class GameTable{
         }
 
         // getSpellDetailsHtml(){
-            // TODO: create dataSpell and assign values
+            // TODO: create dataSpell and assign attack values
         // }
 
         getAttackSpellHtml(){
@@ -74,7 +71,7 @@ class GameTable{
                     </button>`
         }
 
-        getDiceArrayHtml(){
+        getDiceScoreHtml(diceScoreIndex){
 
             const diceArrayHtml = new Array(6);
 
@@ -117,38 +114,34 @@ class GameTable{
                                     <div class="dot face-six dot-6"></div> 
                                 </div>`
                                 
-           return diceArrayHtml[1]                     
+           return diceArrayHtml[diceScoreIndex]                
 
         }
 
-        getCreatureSelected(){
-
-            document.getElementById("Player"+this.heroInstanceId+"SelectCreatureBtn").addEventListener("click", () => {
-                document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = this.getPlayerDeckHtml()
-                })
-        }
-
-        getPlayerDiceContainerHtml(){
-
-            const diceScoreHtmlArray = this.getDiceArrayHtml()
-            console.log(diceScoreHtmlArray)
+        getCreatureDiceContainerHtml(){
+      
+            const diceScoreHtml = this.getDiceScoreHtml()
+            //console.log(diceScoreHtmlArray)
+           // console.log("here")
 
             return `<div id="player${this.heroInstanceId}DiceContainer" class="table-dice-container">
-                        ${diceScoreHtmlArray}
+                        ${diceScoreHtml}
                     </div>`
         }
 
         getPlayerDeckHtml(){
 
-            const fightingCreatureHTML = this.getFightCreatureHtml()
+            const fightingCreatureAvatarHtml = this.getFightCreatureHtml()
 
             const passiveSpellHtml = this.getPassiveSpellHtml()
 
             const attackSpellHtml = this.getAttackSpellHtml()
 
+            console.log(this)
+
             return `
             ${attackSpellHtml}
-            ${fightingCreatureHTML}
+            ${fightingCreatureAvatarHtml}
             ${passiveSpellHtml}
             `
         }    
