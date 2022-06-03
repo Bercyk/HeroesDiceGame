@@ -1,13 +1,9 @@
 import heroStats from "./data/dataHeroes.js"
 import {getRandomObjectFromData} from "./utils.js"
 import Hero from "./Hero.js"
-import GameTable from "./GameTable.js"
 
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
-
-let gameTable1
-let gameTable2
 
 
 function render(){
@@ -17,25 +13,23 @@ function render(){
     heroCard1.getCreaturesEventListeners()
     heroCard2.getCreaturesEventListeners()
 
+    const gameTablePlayer1 = heroCard1.getSelectCreatureEventListener()
+    const gameTablePlayer2 = heroCard2.getSelectCreatureEventListener()
 
-    gameTable1 = new GameTable(heroCard1)
-    gameTable2 = new GameTable(heroCard2)
-    
-    gameTable1.getCreatureSelected()
-    gameTable2.getCreatureSelected()
-    //heroCard2.getCreatureSelected()
 
-    // document.getElementById("btnAtt").addEventListener("click", () => {
-        
-    // })
+    document.getElementById("btnAtt").addEventListener("click", () => {
+        if(gameTablePlayer1){
+        document.getElementById("tableDeck").innerHTML = gameTablePlayer1.getCreatureDiceContainerHtml()
+        }
+        if(gameTablePlayer2){
+            document.getElementById("tableDeck").innerHTML = gameTablePlayer2.getCreatureDiceContainerHtml()
+        }    
+    })
+
 
 }
 
 render()
-
-
-
-
 
 
 

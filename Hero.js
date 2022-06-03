@@ -11,8 +11,7 @@ class Hero{
         Object.assign(this, dataHero)
         this.maxHealth = this.health       
         this.troops = this.getHeroCreatureArray()
-        this.heroInstanceId = Hero.count++
-        
+        this.heroInstanceId = Hero.count++        
     }
 
     getHeroCreatureArray(){
@@ -85,6 +84,17 @@ class Hero{
                 this.getUpdateHeroTroopsHtml(i)
                 )
         }
+    }
+
+    getSelectCreatureEventListener(){
+
+        document.getElementById("Player"+this.heroInstanceId+"SelectCreatureBtn").addEventListener("click", () => {
+            
+            const gameTable = new GameTable(this)
+            document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = gameTable.getPlayerDeckHtml()
+            return gameTable
+        })
+        
     }
 
     getPlayerCardHtml(){
