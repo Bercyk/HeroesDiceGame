@@ -88,13 +88,10 @@ class Hero{
 
     getSelectCreatureEventListener(){
 
-        document.getElementById("Player"+this.heroInstanceId+"SelectCreatureBtn").addEventListener("click", () => {
-            
-            const gameTable = new GameTable(this)
-            document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = gameTable.getPlayerDeckHtml()
-            return gameTable
-        })
-        
+        const initialGameTable = new GameTable(this)
+        document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = initialGameTable.getPlayerDeckHtml()
+        return initialGameTable
+       
     }
 
     getPlayerCardHtml(){

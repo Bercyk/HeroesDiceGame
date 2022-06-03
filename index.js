@@ -5,6 +5,8 @@ import Hero from "./Hero.js"
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
 
+const gameTableArray = new Array(2)
+
 
 function render(){
     document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtml()
@@ -12,19 +14,6 @@ function render(){
     
     heroCard1.getCreaturesEventListeners()
     heroCard2.getCreaturesEventListeners()
-
-    const gameTablePlayer1 = heroCard1.getSelectCreatureEventListener()
-    const gameTablePlayer2 = heroCard2.getSelectCreatureEventListener()
-
-
-    document.getElementById("btnAtt").addEventListener("click", () => {
-        if(gameTablePlayer1){
-        document.getElementById("tableDeck").innerHTML = gameTablePlayer1.getCreatureDiceContainerHtml()
-        }
-        if(gameTablePlayer2){
-            document.getElementById("tableDeck").innerHTML = gameTablePlayer2.getCreatureDiceContainerHtml()
-        }    
-    })
 
 
 }
@@ -34,4 +23,17 @@ render()
 
 
 
+document.getElementById("btnAtt").addEventListener("click", () => {
+    
+    document.getElementById("tableDeck").innerHTML = 
+    gameTableArray[0].getCreatureDiceContainerHtml() + gameTableArray[1].getCreatureDiceContainerHtml()   
+})
 
+document.getElementById('Player1SelectCreatureBtn').onclick = function() {
+
+    gameTableArray[0] = heroCard1.getSelectCreatureEventListener()
+}
+document.getElementById('Player2SelectCreatureBtn').onclick = function() {
+
+    gameTableArray[1] = heroCard2.getSelectCreatureEventListener()
+    }
