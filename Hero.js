@@ -1,7 +1,7 @@
 import Creature from "./Creature.js"
 import creatureStats from "./data/dataCreatures.js"
 import {getPercentage, getRandomObjectFromData} from "./utils.js"
-
+import GameTable from "./GameTable.js"
 class Hero{
 
     static count = 1

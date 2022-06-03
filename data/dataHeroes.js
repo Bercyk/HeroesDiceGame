@@ -7,7 +7,7 @@ const heroStats = {
         avatar: "images/Heroes/Hero_Aeris.png",
         health: 60,
         troops: [],
-        troopsCount: 1,
+        troopsCount: 2,
         attack: 3,
         specialties: ["Reroll Enemy", "Gold Arrow"]
     },
@@ -19,7 +19,7 @@ const heroStats = {
         avatar: "images/Heroes/Hero_Alamar.png",
         health: 80,
         troops: [],
-        troopsCount: 2,
+        troopsCount: 4,
         attack: 7,
         specialties: ["Blessing Charge", "none!TODO!"]
     },
@@ -67,7 +67,7 @@ const heroStats = {
         avatar: "images/Heroes/Hero_Gurnisson.png",
         health: 90,
         troops: [],
-        troopsCount: 2,
+        troopsCount: 4,
         attack: 5,
         specialties: ["Third hand"]
     },
@@ -79,7 +79,7 @@ const heroStats = {
         avatar: "images/Heroes/Hero_Lord_Haart_Death_Knight.png",
         health: 80,
         troops: [],
-        troopsCount: 2,
+        troopsCount: 3,
         attack: 5,
         specialties: ["Ressurection"]
     },

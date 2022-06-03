@@ -23,6 +23,7 @@ function render(){
     
     gameTable1.getCreatureSelected()
     gameTable2.getCreatureSelected()
+    //heroCard2.getCreatureSelected()
 
     // document.getElementById("btnAtt").addEventListener("click", () => {
         

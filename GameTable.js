@@ -1,5 +1,5 @@
-import Hero from "./Hero.js"
 import {getPercentage} from "./utils.js"
+import Creature from "./Creature.js"
 
 
 
@@ -14,20 +14,15 @@ class GameTable{
         this.attackSpell = this.specialties[0]
         this.passiveSpell = this.specialties[1]
         //this.passiveSpell = this.getPassiveSpellHtml()
-        
-        //this.summaryAttackScore = this.getSummaryAttackScoreHtml()
-        this.fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
-
-        this.creatureHealth = this.fightingCreature.health
-        this.creatureMaxHealth = this.fightingCreature.health
-
         this.tableInstanceId = GameTable.count++
+
+
 
 
     }
 
-        getCreatureHealthBarHtml(){
-            const percent = getPercentage(this.creatureHealth, this.creatureMaxHealth)
+        getCreatureHealthBarHtml(creatureHealth, creatureMaxHealth){
+            const percent = getPercentage(creatureHealth, creatureMaxHealth)
             return `<div class="health-bar-outer">
                         <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
                         style="width:${percent}%;">
@@ -37,10 +32,7 @@ class GameTable{
         }
 
         getChildIndexOfCreaturesLayout(){
-
-            //let creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected").id.charAt(7))
-
-            let creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.charAt(6))
+            let creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
 
             return creatureIndex
             // const child = document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").querySelector(" .creature-selected")
@@ -51,11 +43,15 @@ class GameTable{
 
         getFightCreatureHtml(){
 
-            const creatureHealthBar = this.getCreatureHealthBarHtml()
+            const fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
+            const creatureHealth =fightingCreature.health
+            const creatureMaxHealth = fightingCreature.health
+
+            const creatureHealthBar = this.getCreatureHealthBarHtml(creatureHealth, creatureMaxHealth)
 
             return `<div id="Player${this.tableInstanceId}${this.name}" class="deck-placeholder">
                         <div class="creature-fight-status">
-                            <img class="creature-fight-avatar" src="${this.fightingCreature.avatar}">
+                            <img class="creature-fight-avatar" src="${fightingCreature.avatar}">
                             ${creatureHealthBar}
                         </div>
                     </div>
@@ -125,10 +121,16 @@ class GameTable{
 
         }
 
+        getCreatureSelected(){
+
+            document.getElementById("Player"+this.heroInstanceId+"SelectCreatureBtn").addEventListener("click", () => {
+                document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = this.getPlayerDeckHtml()
+                })
+        }
+
         getPlayerDiceContainerHtml(){
 
             const diceScoreHtmlArray = this.getDiceArrayHtml()
-
             console.log(diceScoreHtmlArray)
 
             return `<div id="player${this.heroInstanceId}DiceContainer" class="table-dice-container">
@@ -149,23 +151,7 @@ class GameTable{
             ${fightingCreatureHTML}
             ${passiveSpellHtml}
             `
-        }
-
-        getCreatureSelected(){
-
-            if(!document.getElementById("Player"+this.heroInstanceId+"SelectCreatureBtn").getAttribute("listener")){
-                document.getElementById("Player"+this.heroInstanceId+"SelectCreatureBtn").addEventListener("click", () => {
-
-                    document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = this.getPlayerDeckHtml()
-                })
-            }
-            else{
-                document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = this.getPlayerDeckHtml()
-            }
-
-
-        }
-        
+        }    
 
 }
     
