@@ -36,4 +36,4 @@ document.getElementById('Player1SelectCreatureBtn').onclick = function() {
 document.getElementById('Player2SelectCreatureBtn').onclick = function() {
 
     gameTableArray[1] = heroCard2.getSelectCreatureEventListener()
-    }
+}
