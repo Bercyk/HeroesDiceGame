@@ -1,3 +1,5 @@
+import {getDiceRollArray} from "./utils.js"
+
 class Creature{
     constructor(dataCreature){
         Object.assign(this, dataCreature);
@@ -63,6 +65,10 @@ class Creature{
                     </div>
                 </div>
                 `
+    }
+
+    getCreatureDiceScoreArray(){
+        return getDiceRollArray(this.diceCount)
     }
 
 }

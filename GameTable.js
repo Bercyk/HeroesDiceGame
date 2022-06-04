@@ -114,15 +114,29 @@ class GameTable{
                                 <div class="dot face-six dot-6"></div> 
                             </div>`
                             
-        return diceArrayHtml[diceScoreIndex]                
+        return diceArrayHtml[diceScoreIndex-1]                
 
     }
 
+    getCreatureDiceHtml(diceValue, diceNumber){
+
+        const creatureDiceHtml = this.getDiceScoreHtml(diceValue)
+
+        return `<div id="dice${diceNumber}CreaturePlayer${this.heroInstanceId}">
+                    ${creatureDiceHtml}
+                </div>
+                `
+    }
+
     getCreatureDiceContainerHtml(){
+
+        this.fightingCreature.diceScoreArray = this.fightingCreature.getCreatureDiceScoreArray()
     
-        const diceScoreHtml = this.getDiceScoreHtml(1)
-        //console.log(diceScoreHtmlArray)
-        // console.log("here")
+        console.log(this.fightingCreature.diceScoreArray)
+
+        const diceScoreHtml = this.fightingCreature.diceScoreArray.map((num, index) =>
+            this.getCreatureDiceHtml(num, index)
+             )
 
         return `<div id="player${this.heroInstanceId}DiceContainer" class="table-dice-container">
                     ${diceScoreHtml}
@@ -137,7 +151,9 @@ class GameTable{
 
         const attackSpellHtml = this.getAttackSpellHtml()
 
+        // TODO: HERE LOGGING GameTable
         console.log(this)
+        // TODO:
 
         return `
         ${attackSpellHtml}
