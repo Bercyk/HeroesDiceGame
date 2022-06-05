@@ -1,4 +1,4 @@
-import {getPercentage} from "./utils.js"
+import {getPercentage, isEven} from "./utils.js"
 
 class GameTable{
 
@@ -7,7 +7,6 @@ class GameTable{
     constructor(heroCard){
         
         Object.assign(this, heroCard)
-        //this.fightingCreature = this.getFightCreatureHtml()
         this.attackSpell = this.specialties[0]
         this.passiveSpell = this.specialties[1]
         //this.tableInstanceId = GameTable.count++
@@ -39,10 +38,6 @@ class GameTable{
     }
 
     getFightCreatureHtml(){
-
-        // const fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
-        // const creatureHealth = fightingCreature.health
-        // const creatureMaxHealth = fightingCreature.health
 
         const creatureHealthBar = this.getCreatureHealthBarHtml()
 
@@ -128,15 +123,14 @@ class GameTable{
                 `
     }
 
-    getCreatureDiceContainerHtml(){
+    getCreatureDiceContainerHtml(roundFightCounter){
 
-        this.fightingCreature.diceScoreArray = this.fightingCreature.getCreatureDiceScoreArray()
-    
-        console.log(this.fightingCreature.diceScoreArray)
-
+        if(isEven(roundFightCounter)){
+            this.fightingCreature.diceScoreArray = this.fightingCreature.getCreatureDiceScoreArray()    
+        }
         const diceScoreHtml = this.fightingCreature.diceScoreArray.map((num, index) =>
             this.getCreatureDiceHtml(num, index)
-             )
+             ).join("")
 
         return `<div id="player${this.heroInstanceId}DiceContainer" class="table-dice-container">
                     ${diceScoreHtml}
@@ -160,7 +154,13 @@ class GameTable{
         ${fightingCreatureAvatarHtml}
         ${passiveSpellHtml}
         `
-    }    
+    }  
+    
+    //TODO: add take damage to creature
+    // TODO: add take damage to hero
+    // count it by ratio chance
+
+
 
 }
     

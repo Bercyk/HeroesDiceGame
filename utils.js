@@ -18,5 +18,9 @@ function getTroopsPlaceholderHtml() {
     ).join("")
 }
 
+function isEven(n) {
+    return n % 2 == 0;
+ }
 
-export {getPercentage, getRandomObjectFromData, getTroopsPlaceholderHtml, getDiceRollArray}
+
+export {getPercentage, getRandomObjectFromData, getTroopsPlaceholderHtml, getDiceRollArray, isEven}

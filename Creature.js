@@ -71,6 +71,10 @@ class Creature{
         return getDiceRollArray(this.diceCount)
     }
 
+    getCreatureDamageSummary(){
+        return this.diceScoreArray.reduce((partialSum, a) => partialSum + a, 0)
+    }
+
 }
 
 export default Creature
