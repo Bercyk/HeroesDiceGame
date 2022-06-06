@@ -1,7 +1,7 @@
 import heroStats from "./data/dataHeroes.js"
 import {getRandomObjectFromData, isEven} from "./utils.js"
 import Hero from "./Hero.js"
-import TurnSummary from "./TurnSummary.js"
+import GameTable from "./GameTable.js"
 
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
@@ -28,7 +28,8 @@ render()
 document.getElementById("btnAtt").addEventListener("click", () => {
 
     //TODO: get data from table (selected creature) and do new gameTable which contains both fightingCreatures
-    startGame()
+    const gameTable = new GameTable(heroCard1, heroCard2)
+    //startGame()
 })
 
 function fightDiceRoll(){
