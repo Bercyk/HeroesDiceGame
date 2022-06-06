@@ -26,15 +26,15 @@ render()
 
 document.getElementById("btnAtt").addEventListener("click", () => {
     startGame()
-
 })
 
 function fightDiceRoll(){
     if(gameTableArray[0]&&gameTableArray[1]){
-        const newArray = gameTableArray.map((gameTable) =>
+        const getCreatureDiceContainerArrayHtml = gameTableArray.map((gameTable) =>
             gameTable.getCreatureDiceContainerHtml(roundFightCounter)
         ).join("")
-        document.getElementById("tableDeck").innerHTML = newArray
+        document.getElementById("tableDeck").innerHTML = getCreatureDiceContainerArrayHtml
+        return true
     }
     else{
         return false
@@ -43,28 +43,42 @@ function fightDiceRoll(){
 
 function startGame(){
 
+    
+
     //TODO: NEW TURN SUMMARY -> 
     if(isEven(roundFightCounter)){
         fightDiceRoll()
         if(fightDiceRoll()){ 
-            document.getElementById("btnAtt").innerText = "Sum up damage"
+            document.getElementById("btnAtt").innerText = "Next turn"
+            roundFightCounter++
         }
+        else{
+            alert("Select creature to fight!")
+        }
+        
     }
     else{
-        const roundSummary = new TurnSummary(gameTableArray)
+
+        document.getElementById("tableDeck").innerHTML = ""
+        
+        const roundSummary = new TurnSummary(gameTableArray)  
 
         roundSummary.getFightingCreatureDamage()
+        roundSummary.getRenderRoundSummary()
+
+        fightDiceRoll()
         // gameTableArray.map((gameTable) => 
         //     gameTable.getRoundSummary()
         // )
         
         
 
-        console.log("need to take damage from characters, and render table and hero (if hit)")
+        //console.log("need to take damage from characters, and render table and hero (if hit)")
         document.getElementById("btnAtt").innerText = "Fight! ⚔️"
+        roundFightCounter++
     }
     
-    roundFightCounter++
+    
 }
 
 // TODO: change this action event to function
@@ -76,5 +90,6 @@ document.getElementById('Player1SelectCreatureBtn').onclick = function() {
 document.getElementById('Player2SelectCreatureBtn').onclick = function() {
 
     gameTableArray[1] = heroCard2.getSelectCreatureEventListener()
+
 }
 

@@ -139,19 +139,19 @@ class GameTable{
 
     getPlayerDeckHtml(){
 
-        const fightingCreatureAvatarHtml = this.getFightCreatureHtml()
+        const fightingCreatureContainerHtml = this.getFightCreatureHtml()
 
         const passiveSpellHtml = this.getPassiveSpellHtml()
 
         const attackSpellHtml = this.getAttackSpellHtml()
 
         // TODO: HERE LOGGING GameTable
-        console.log(this)
+        //console.log(this)
         // TODO:
 
         return `
         ${attackSpellHtml}
-        ${fightingCreatureAvatarHtml}
+        ${fightingCreatureContainerHtml}
         ${passiveSpellHtml}
         `
     }  
