@@ -41,7 +41,7 @@ class GameTable{
 
         const creatureHealthBar = this.getCreatureHealthBarHtml()
 
-        return `<div id="Player${this.heroInstanceId}${this.name}" class="deck-placeholder">
+        return `<div id="Player${this.heroInstanceId}FightingCreature" class="deck-placeholder">
                     <div class="creature-fight-status">
                         <img class="creature-fight-avatar" src="${this.fightingCreature.avatar}">
                         ${creatureHealthBar}

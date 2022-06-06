@@ -77,7 +77,7 @@ class Hero{
 
     }
 
-    getCreaturesEventListeners(){
+    getHeroCardCreatureEventListener(){
 
         for(let i=0; i < this.troops.length; i++){
             document.getElementById("Player"+this.heroInstanceId+"Creature"+i).addEventListener("click",() =>
@@ -86,12 +86,33 @@ class Hero{
         }
     }
 
-    getSelectCreatureEventListener(){
+    // getSelectCreatureEventListener(){
 
-        const initialGameTable = new GameTable(this)
-        document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = initialGameTable.getPlayerDeckHtml()
-        return initialGameTable
+    //     const initialGameTable = new GameTable(this)
+    //     document.getElementById("player"+this.heroInstanceId+"Deck").innerHTML = initialGameTable.getPlayerDeckHtml()
+    //     return initialGameTable
        
+    // }
+
+    getSelectedCreatureToGameTableHtml(){
+
+        document.getElementById("Player"+this.heroInstanceId+"SelectCreatureBtn").onclick = () => {
+            
+            const selectedCreature = this.troops[this.getIndexOfSelectedCreature()]
+            document.getElementById("player"+this.heroInstanceId+"FightCreature").innerHTML = `<div class="creature-fight-status">
+                                                                                                    <img class="creature-fight-avatar" src="${selectedCreature.avatar}">
+                                                                                                </div>`
+         }
+    }
+
+    getIndexOfSelectedCreature(){
+        const creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
+        return creatureIndex
+        
+        // const child = document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").querySelector(" .creature-selected")
+        // const parent = child.parentNode
+
+        // return Array.prototype.indexOf.call(parent.children, child);
     }
 
     getPlayerCardHtml(){
@@ -113,9 +134,6 @@ class Hero{
                 <button class="btn btn-selectCreature" id="Player${instanceId}SelectCreatureBtn">Select creature</button>
                 `
     }
-
-    
-
 
 }
 

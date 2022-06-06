@@ -6,7 +6,7 @@ import TurnSummary from "./TurnSummary.js"
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
 
-const gameTableArray = new Array(2)
+//const gameTableArray = [heroCard1, heroCard2]
 
 let roundFightCounter = 0
 
@@ -14,10 +14,11 @@ function render(){
     document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtml()
     document.getElementById("player2Card-El").innerHTML = heroCard2.getPlayerCardHtml()
     
-    heroCard1.getCreaturesEventListeners()
-    heroCard2.getCreaturesEventListeners()
+    heroCard1.getHeroCardCreatureEventListener()
+    heroCard2.getHeroCardCreatureEventListener()
 
-
+    heroCard1.getSelectedCreatureToGameTableHtml()
+    heroCard2.getSelectedCreatureToGameTableHtml()
 }
 
 render()
@@ -25,6 +26,8 @@ render()
 
 
 document.getElementById("btnAtt").addEventListener("click", () => {
+
+    //TODO: get data from table (selected creature) and do new gameTable which contains both fightingCreatures
     startGame()
 })
 
@@ -40,10 +43,9 @@ function fightDiceRoll(){
         return false
     }
 }
-
 function startGame(){
 
-    
+
 
     //TODO: NEW TURN SUMMARY -> 
     if(isEven(roundFightCounter)){
@@ -83,13 +85,5 @@ function startGame(){
 
 // TODO: change this action event to function
 
-document.getElementById('Player1SelectCreatureBtn').onclick = function() {
 
-    gameTableArray[0] = heroCard1.getSelectCreatureEventListener()
-}
-document.getElementById('Player2SelectCreatureBtn').onclick = function() {
-
-    gameTableArray[1] = heroCard2.getSelectCreatureEventListener()
-
-}
 
