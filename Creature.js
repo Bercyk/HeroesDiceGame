@@ -75,6 +75,8 @@ class Creature{
         return this.diceScoreArray.reduce((previousDiceScore, currentDiceScore) => previousDiceScore + currentDiceScore, 0)
     }
 
+    
+
 }
 
 export default Creature
