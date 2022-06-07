@@ -33,6 +33,8 @@ document.getElementById("btnAtt").addEventListener("click", () => {
     gameTable.getFightingCreatureDiceScoreArray()
 
     gameTable.getFightingCreatureDamageScore()
+    
+    gameTable.getFightCreatureArrayHtml()
 
     console.log(gameTable)
     //startGame()

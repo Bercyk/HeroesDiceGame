@@ -7,6 +7,7 @@ class GameTable{
         this.playersDataArray = [heroCard1, heroCard2]
 
         this.fightingCreatureArray = this.getFightingCreatureArray()
+        this.fightingCreatureMaxHealthArray = this.getFightingCreatureMaxHealthArray()
 
         this.heroAttackSpellArray = this.getAttackSpellArray()
 
@@ -15,7 +16,10 @@ class GameTable{
     }
 
     getSelectedCreatureIndex(heroData){
-        return parseInt(document.getElementById("Player"+heroData.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+heroData.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
+        return parseInt(document.getElementById("Player"+heroData.heroInstanceId+"CreaturesLayout")
+        .getElementsByClassName("creature-selected")[0].id
+        .substring(document.getElementById("Player"+heroData.heroInstanceId+"CreaturesLayout")
+        .getElementsByClassName("creature-selected")[0].id.length-1))
     }
 
     getFightingCreatureArray(){
@@ -26,11 +30,8 @@ class GameTable{
     }
 
     getFightingCreatureDiceScoreArray(){
-        const fightingCreatureDiceScoreArray = this.fightingCreatureArray.map((fightingCreature) =>
-            fightingCreature.getCreatureDiceScoreArray()
-        )
-        console.log(fightingCreatureDiceScoreArray)
-        return fightingCreatureDiceScoreArray
+
+        this.fightingCreatureArray.forEach(creature => creature.diceScoreArray = creature.getCreatureDiceScoreArray())
     }
 
     getFightingCreatureDamageScore(){
@@ -39,10 +40,71 @@ class GameTable{
             fightingCreature.getCreatureDamageSummary()
         )
 
-        console.log(fightingCreatureDamageScoreArray)
-
         return fightingCreatureDamageScoreArray
     }
+
+    getFightingCreatureMaxHealthArray(){
+        return new Array(this.fightingCreatureArray.length).fill(0).map((num, index) =>
+            num = this.fightingCreatureArray[index].health
+        )
+    }
+
+    getCreatureHealthBarArrayHtml(){
+        const percentArray = new Array(this.fightingCreatureMaxHealthArray.length).fill(0).map((num, index) =>
+            num = getPercentage(this.fightingCreatureArray[index].health, this.fightingCreatureMaxHealthArray[index])
+        )
+
+        return percentArray.map((percent) =>
+                                                `<div class="health-bar-outer">
+                                                    <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
+                                                        style="width:${percent}%;">
+                                                  </div>
+                                                </div>
+                                                ` 
+        )
+
+        console.log(percentArray)
+        // return `<div class="health-bar-outer">
+        //             <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
+        //             style="width:${percent}%;">
+        //             </div>
+        //         </div>
+        //         ` 
+    }
+
+    getFightCreatureArrayHtml(){
+
+        const creatureHealthBarArray = this.getCreatureHealthBarArrayHtml()
+        const test = new Array(this.playersDataArray.length).fill(0)
+        
+        const test2 = test.map((num, index)=> 
+            num = //TODO: function to create single creature code
+            
+            `<div id="Player${index}FightingCreature" class="deck-placeholder">
+                        <div class="creature-fight-status">
+                        <img class="creature-fight-avatar" src="{this.fightingCreatureArray[index].avatar}">
+                        {creatureHealthBarArray[index]}
+                        </div>
+                    </div>
+                    `
+        )
+        
+        //this.playersDataArray.forEach((player => ))
+            `<div id="Player{index}FightingCreature" class="deck-placeholder">
+                        <div class="creature-fight-status">
+                            <img class="creature-fight-avatar" src="{this.fightingCreatureArray[index].avatar}">
+                            {creatureHealthBarArray[index]}
+                        </div>
+                    </div>
+                    `
+        
+
+        console.log(test)
+        console.log(test2)
+
+    }
+
+
 
     // TODO: create dataSpell with spells and their details
     // create method for getting arraySpell
@@ -66,6 +128,7 @@ class GameTable{
 
 
 
+
     //static count = 1
 
     // constructor(heroCard){
@@ -78,28 +141,9 @@ class GameTable{
 
     // }
 
-    // getCreatureHealthBarHtml(){
-    //     const percent = getPercentage(this.fightingCreatureHealth, this.fightingCreatureMaxHealth)
-    //     return `<div class="health-bar-outer">
-    //                 <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
-    //                 style="width:${percent}%;">
-    //                 </div>
-    //             </div>
-    //             ` 
-    // }
 
-    // getFightCreatureHtml(){
 
-    //     const creatureHealthBar = this.getCreatureHealthBarHtml()
 
-    //     return `<div id="Player${this.heroInstanceId}FightingCreature" class="deck-placeholder">
-    //                 <div class="creature-fight-status">
-    //                     <img class="creature-fight-avatar" src="${this.fightingCreature.avatar}">
-    //                     ${creatureHealthBar}
-    //                 </div>
-    //             </div>
-    //             `
-    // }
 
     // // getSpellDetailsHtml(){
     //     // TODO: create dataSpell and assign attack values
