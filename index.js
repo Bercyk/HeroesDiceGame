@@ -29,8 +29,23 @@ document.getElementById("btnAtt").addEventListener("click", () => {
 
     //TODO: get data from table (selected creature) and do new gameTable which contains both fightingCreatures
     const gameTable = new GameTable(heroCard1, heroCard2)
+
+    gameTable.getFightingCreatureDiceScoreArray()
+
+    gameTable.getFightingCreatureDamageScore()
+
+    console.log(gameTable)
     //startGame()
 })
+
+
+
+
+
+
+
+
+
 
 function fightDiceRoll(){
     if(gameTableArray[0]&&gameTableArray[1]){
@@ -44,6 +59,8 @@ function fightDiceRoll(){
         return false
     }
 }
+
+
 function startGame(){
 
 

@@ -72,7 +72,7 @@ class Creature{
     }
 
     getCreatureDamageSummary(){
-        return this.diceScoreArray.reduce((partialSum, a) => partialSum + a, 0)
+        return this.diceScoreArray.reduce((previousDiceScore, currentDiceScore) => previousDiceScore + currentDiceScore, 0)
     }
 
 }

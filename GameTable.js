@@ -4,29 +4,66 @@ class GameTable{
 
     constructor(heroCard1, heroCard2){
 
-        const playerDataArray = [heroCard1, heroCard2]
+        this.playersDataArray = [heroCard1, heroCard2]
 
-        console.log(playerDataArray)
+        this.fightingCreatureArray = this.getFightingCreatureArray()
 
-        this.test = this.getFightCreatureArray(playerDataArray)
+        this.heroAttackSpellArray = this.getAttackSpellArray()
+
+        this.heroPassiveSpellArray = this.getPassiveSpellArray()
+
     }
 
-    getSelectedCreatureIndex(){
-
-     //   TODO: send array and make it more open
-
-        const creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
-        return creatureIndex
+    getSelectedCreatureIndex(heroData){
+        return parseInt(document.getElementById("Player"+heroData.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+heroData.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
     }
 
-    getFightCreatureArray(playerDataArray){
-        const fightCreatureArray = playerDataArray.map((object) =>
-            object.troops[this.getSelectedCreatureIndex()]
+    getFightingCreatureArray(){
+        const fightingCreatureArray = this.playersDataArray.map((heroData) =>
+            heroData.troops[this.getSelectedCreatureIndex(heroData)]
         )
-        console.log(fightCreatureArray)
-
-        return fightCreatureArray
+        return fightingCreatureArray
     }
+
+    getFightingCreatureDiceScoreArray(){
+        const fightingCreatureDiceScoreArray = this.fightingCreatureArray.map((fightingCreature) =>
+            fightingCreature.getCreatureDiceScoreArray()
+        )
+        console.log(fightingCreatureDiceScoreArray)
+        return fightingCreatureDiceScoreArray
+    }
+
+    getFightingCreatureDamageScore(){
+        
+        const fightingCreatureDamageScoreArray = this.fightingCreatureArray.map((fightingCreature) =>
+            fightingCreature.getCreatureDamageSummary()
+        )
+
+        console.log(fightingCreatureDamageScoreArray)
+
+        return fightingCreatureDamageScoreArray
+    }
+
+    // TODO: create dataSpell with spells and their details
+    // create method for getting arraySpell
+
+    getAttackSpellArray(){
+        const attackSpellArray = this.playersDataArray.map((heroData) =>
+            heroData.specialties[0]
+        )
+        return attackSpellArray
+    }
+
+    getPassiveSpellArray(){
+        const passiveSpellArray = this.playersDataArray.map((heroData) =>
+            heroData.specialties[1]
+        )
+        return passiveSpellArray
+    }
+
+
+
+
 
 
     //static count = 1
@@ -38,9 +75,6 @@ class GameTable{
     //     this.passiveSpell = this.specialties[1]
     //     //this.tableInstanceId = GameTable.count++
 
-    //     this.fightingCreature = this.troops[this.getChildIndexOfCreaturesLayout()]
-    //     this.fightingCreatureHealth = this.fightingCreature.health
-    //     this.fightingCreatureMaxHealth = this.fightingCreature.health
 
     // }
 
@@ -52,16 +86,6 @@ class GameTable{
     //                 </div>
     //             </div>
     //             ` 
-    // }
-
-    // getChildIndexOfCreaturesLayout(){
-    //     const creatureIndex = parseInt(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.substring(document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").getElementsByClassName("creature-selected")[0].id.length-1))
-    //     return creatureIndex
-        
-    //     // const child = document.getElementById("Player"+this.heroInstanceId+"CreaturesLayout").querySelector(" .creature-selected")
-    //     // const parent = child.parentNode
-
-    //     // return Array.prototype.indexOf.call(parent.children, child);
     // }
 
     // getFightCreatureHtml(){

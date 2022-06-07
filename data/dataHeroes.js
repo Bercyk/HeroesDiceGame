@@ -9,7 +9,8 @@ const heroStats = {
         troops: [],
         troopsCount: 2,
         attack: 3,
-        specialties: ["Reroll Enemy", "Gold Arrow"]
+        specialties: ["Fireball", "Heal"]
+        //specialties: ["Reroll Enemy", "Gold Arrow"]
     },
 
     Alamar: {
@@ -21,7 +22,8 @@ const heroStats = {
         troops: [],
         troopsCount: 4,
         attack: 7,
-        specialties: ["Blessing Charge", "none!TODO!"]
+        specialties: ["Fireball", "Heal"]
+        //specialties: ["Blessing Charge", "none!TODO!"]
     },
 
     Catherine: {
@@ -33,7 +35,8 @@ const heroStats = {
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Heavenly Morale"]
+        specialties: ["Fireball", "Heal"]
+        //specialties: ["Heavenly Morale"]
     },
 
     Christian: {
@@ -45,7 +48,8 @@ const heroStats = {
         troops: [],
         troopsCount: 4,
         attack: 5,
-        specialties: ["Reroll Dice"]
+        specialties: ["Fireball", "Heal"]
+        //specialties: ["Reroll Dice"]
     },
 
     Gundula: {
@@ -57,7 +61,8 @@ const heroStats = {
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Fireball"]
+        specialties: ["Fireball", "Heal"]
+        //specialties: ["Fireball"]
     },
 
     Gurnisson: {
@@ -81,7 +86,8 @@ const heroStats = {
         troops: [],
         troopsCount: 3,
         attack: 5,
-        specialties: ["Ressurection"]
+        specialties: ["Fireball", "Heal"]
+        //specialties: ["Ressurection"]
     },
 
     Marius: {
@@ -93,7 +99,8 @@ const heroStats = {
         troops: [],
         troopsCount: 4,
         attack: 5,
-        specialties: ["Gates of Hell", "Abomination"]
+        specialties: ["Fireball", "Heal"]
+        //specialties: ["Gates of Hell", "Abomination"]
     }
 
 }
