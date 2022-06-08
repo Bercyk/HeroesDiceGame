@@ -10,6 +10,8 @@ const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
 
 let roundFightCounter = 0
 
+let test = false
+
 function render(){
     document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtml()
     document.getElementById("player2Card-El").innerHTML = heroCard2.getPlayerCardHtml()
@@ -27,17 +29,18 @@ render()
 
 document.getElementById("btnAtt").addEventListener("click", () => {
 
-    //TODO: get data from table (selected creature) and do new gameTable which contains both fightingCreatures
     const gameTable = new GameTable(heroCard1, heroCard2)
-
-    gameTable.getFightingCreatureDiceScoreArray()
-
-    gameTable.getFightingCreatureDamageScore()
+    //TODO: get data from table (selected creature) and do new gameTable which contains both fightingCreatures
+    if(!test){
+        
+        gameTable.getGameTableRender()
+        test = true
+    }
+    else{
+        gameTable.getCreatureDamage()
+        test = false
+    }
     
-    gameTable.getFightCreatureArrayHtml()
-
-    console.log(gameTable)
-    //startGame()
 })
 
 
@@ -63,45 +66,45 @@ function fightDiceRoll(){
 }
 
 
-function startGame(){
+// function startGame(){
 
 
 
-    //TODO: NEW TURN SUMMARY -> 
-    if(isEven(roundFightCounter)){
-        fightDiceRoll()
-        if(fightDiceRoll()){ 
-            document.getElementById("btnAtt").innerText = "Next turn"
-            roundFightCounter++
-        }
-        else{
-            alert("Select creature to fight!")
-        }
+//     //TODO: NEW TURN SUMMARY -> 
+//     if(isEven(roundFightCounter)){
+//         fightDiceRoll()
+//         if(fightDiceRoll()){ 
+//             document.getElementById("btnAtt").innerText = "Next turn"
+//             roundFightCounter++
+//         }
+//         else{
+//             alert("Select creature to fight!")
+//         }
         
-    }
-    else{
+//     }
+//     else{
 
-        document.getElementById("tableDeck").innerHTML = ""
+//         document.getElementById("tableDeck").innerHTML = ""
         
-        const roundSummary = new TurnSummary(gameTableArray)  
+//         const roundSummary = new TurnSummary(gameTableArray)  
 
-        roundSummary.getFightingCreatureDamage()
-        roundSummary.getRenderRoundSummary()
+//         roundSummary.getFightingCreatureDamage()
+//         roundSummary.getRenderRoundSummary()
 
-        fightDiceRoll()
-        // gameTableArray.map((gameTable) => 
-        //     gameTable.getRoundSummary()
-        // )
+//         fightDiceRoll()
+//         // gameTableArray.map((gameTable) => 
+//         //     gameTable.getRoundSummary()
+//         // )
         
         
 
-        //console.log("need to take damage from characters, and render table and hero (if hit)")
-        document.getElementById("btnAtt").innerText = "Fight! ⚔️"
-        roundFightCounter++
-    }
+//         //console.log("need to take damage from characters, and render table and hero (if hit)")
+//         document.getElementById("btnAtt").innerText = "Fight! ⚔️"
+//         roundFightCounter++
+//     }
     
     
-}
+// }
 
 // TODO: change this action event to function
 

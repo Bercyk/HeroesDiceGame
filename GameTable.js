@@ -1,4 +1,4 @@
-import {getPercentage, isEven} from "./utils.js"
+import {getPercentage} from "./utils.js"
 
 class GameTable{
 
@@ -29,10 +29,14 @@ class GameTable{
         return fightingCreatureArray
     }
 
+    // rolling dice
+
     getFightingCreatureDiceScoreArray(){
 
         this.fightingCreatureArray.forEach(creature => creature.diceScoreArray = creature.getCreatureDiceScoreArray())
     }
+
+    // get damage summary
 
     getFightingCreatureDamageScore(){
         
@@ -50,6 +54,12 @@ class GameTable{
     }
 
     getCreatureHealthBarArrayHtml(){
+
+        // for testing purpose
+
+        //this.fightingCreatureArray[0].health = this.fightingCreatureArray[0].health*0.5
+
+
         const percentArray = new Array(this.fightingCreatureMaxHealthArray.length).fill(0).map((num, index) =>
             num = getPercentage(this.fightingCreatureArray[index].health, this.fightingCreatureMaxHealthArray[index])
         )
@@ -62,46 +72,20 @@ class GameTable{
                                                 </div>
                                                 ` 
         )
-
-        console.log(percentArray)
-        // return `<div class="health-bar-outer">
-        //             <div class="health-bar-inner ${percent < 26 ? "danger" : ""}" 
-        //             style="width:${percent}%;">
-        //             </div>
-        //         </div>
-        //         ` 
     }
 
-    getFightCreatureArrayHtml(){
+    getFightingCreatureArrayHtml(){
 
         const creatureHealthBarArray = this.getCreatureHealthBarArrayHtml()
-        const test = new Array(this.playersDataArray.length).fill(0)
-        
-        const test2 = test.map((num, index)=> 
-            num = //TODO: function to create single creature code
-            
-            `<div id="Player${index}FightingCreature" class="deck-placeholder">
-                        <div class="creature-fight-status">
-                        <img class="creature-fight-avatar" src="{this.fightingCreatureArray[index].avatar}">
-                        {creatureHealthBarArray[index]}
-                        </div>
-                    </div>
-                    `
-        )
-        
-        //this.playersDataArray.forEach((player => ))
-            `<div id="Player{index}FightingCreature" class="deck-placeholder">
-                        <div class="creature-fight-status">
-                            <img class="creature-fight-avatar" src="{this.fightingCreatureArray[index].avatar}">
-                            {creatureHealthBarArray[index]}
-                        </div>
-                    </div>
-                    `
-        
-
-        console.log(test)
-        console.log(test2)
-
+        return new Array(this.playersDataArray.length).fill(0).map((num, index) => 
+                    `<div id="Player${index+1}FightingCreature" class="deck-placeholder">
+                         <div class="creature-fight-status">
+                             <img class="creature-fight-avatar" src="${this.fightingCreatureArray[index].avatar}">
+                             ${creatureHealthBarArray[index]}
+                         </div>
+                     </div>
+                     `
+        )   
     }
 
 
@@ -123,140 +107,136 @@ class GameTable{
         return passiveSpellArray
     }
 
+    getAttackSpellArrayHtml(){
 
+        const attackSpellArray = this.getAttackSpellArray()
 
+        return attackSpellArray.map((num, index) => 
+            `<button id="Player${index+1}AttackSpell" class="btn-spell">
+                    <p class="action-icon">🔥</p>
+                </button>`
+        )
+    }
 
+    getPassiveSpellArrayHtml(){
 
+        const passiveSpellArray = this.getAttackSpellArray()
 
+        return passiveSpellArray.map((num, index) => 
+            `<button id="Player${index+1}PassiveSpell" class="btn-spell">
+                    <p class="action-icon">📖</p>
+                </button>`
+        )
+    }
 
-    //static count = 1
+    getPlayerDeckArrayHtml(){
 
-    // constructor(heroCard){
-        
-    //     Object.assign(this, heroCard)
-    //     this.attackSpell = this.specialties[0]
-    //     this.passiveSpell = this.specialties[1]
-    //     //this.tableInstanceId = GameTable.count++
+        this.getFightingCreatureDiceScoreArray()
 
+        const fightingCreatureArrayHtml = this.getFightingCreatureArrayHtml()
+        const attackSpellArrayHtml = this.getAttackSpellArrayHtml()
+        const passiveSpellArrayHtml = this.getPassiveSpellArrayHtml()
 
-    // }
+        return  new Array(this.playersDataArray.length).fill(0).map((num, index) =>
+            attackSpellArrayHtml[index]+fightingCreatureArrayHtml[index]+passiveSpellArrayHtml[index]
+        )
+    }
 
+    getDiceScoreHtml(diceScoreIndex){
 
+        const diceArrayHtml = new Array(6);
 
+        diceArrayHtml[0] = `<div id="dice1Score" class="dice">
+                                <div class="dot face-one dot-1"></div>
+                            </div>`
 
+        diceArrayHtml[1] = `<div id="dice2Score" class="dice">
+                                <div class="dot face-two dot-1"></div>
+                                <div class="dot face-two dot-2"></div>
+                            </div>` 
 
-    // // getSpellDetailsHtml(){
-    //     // TODO: create dataSpell and assign attack values
-    // // }
+        diceArrayHtml[2] = `<div id="dice3Score" class="dice">
+                                <div class="dot face-three dot-1"></div>
+                                <div class="dot face-three dot-2"></div>
+                                <div class="dot face-three dot-3"></div> 
+                            </div>`
 
-    // getAttackSpellHtml(){
-    //     return `<button id="Player${this.heroInstanceId}AttackSpell" class="btn-spell">
-    //                 <p class="action-icon">🔥</p>
-    //             </button>`
-    // }
+        diceArrayHtml[3] = `<div id="dice4Score" class="dice">
+                                <div class="dot face-four dot-1"></div>
+                                <div class="dot face-four dot-2"></div>
+                                <div class="dot face-four dot-3"></div>
+                                <div class="dot face-four dot-4"></div>  
+                            </div>`  
 
-    // getPassiveSpellHtml(){
-    //     return `<button id="Player${this.heroInstanceId}PassiveSpell" class="btn-spell">
-    //                 <p class="action-icon">📖</p>
-    //             </button>`
-    // }
+        diceArrayHtml[4] = `<div id="dice5Score" class="dice">
+                                <div class="dot face-five dot-1"></div>
+                                <div class="dot face-five dot-2"></div>
+                                <div class="dot face-five dot-3"></div>
+                                <div class="dot face-five dot-4"></div>
+                                <div class="dot face-five dot-5"></div>   
+                            </div>` 
 
-    // getDiceScoreHtml(diceScoreIndex){
-
-    //     const diceArrayHtml = new Array(6);
-
-    //     diceArrayHtml[0] = `<div id="dice1Score" class="dice">
-    //                             <div class="dot face-one dot-1"></div>
-    //                         </div>`
-
-    //     diceArrayHtml[1] = `<div id="dice2Score" class="dice">
-    //                             <div class="dot face-two dot-1"></div>
-    //                             <div class="dot face-two dot-2"></div>
-    //                         </div>` 
-
-    //     diceArrayHtml[2] = `<div id="dice3Score" class="dice">
-    //                             <div class="dot face-three dot-1"></div>
-    //                             <div class="dot face-three dot-2"></div>
-    //                             <div class="dot face-three dot-3"></div> 
-    //                         </div>`
-
-    //     diceArrayHtml[3] = `<div id="dice4Score" class="dice">
-    //                             <div class="dot face-four dot-1"></div>
-    //                             <div class="dot face-four dot-2"></div>
-    //                             <div class="dot face-four dot-3"></div>
-    //                             <div class="dot face-four dot-4"></div>  
-    //                         </div>`  
-
-    //     diceArrayHtml[4] = `<div id="dice5Score" class="dice">
-    //                             <div class="dot face-five dot-1"></div>
-    //                             <div class="dot face-five dot-2"></div>
-    //                             <div class="dot face-five dot-3"></div>
-    //                             <div class="dot face-five dot-4"></div>
-    //                             <div class="dot face-five dot-5"></div>   
-    //                         </div>` 
-
-    //     diceArrayHtml[5] = `<div id="dice6Score" class="dice">
-    //                             <div class="dot face-six dot-1"></div>
-    //                             <div class="dot face-six dot-2"></div>
-    //                             <div class="dot face-six dot-3"></div>
-    //                             <div class="dot face-six dot-4"></div>
-    //                             <div class="dot face-six dot-5"></div>   
-    //                             <div class="dot face-six dot-6"></div> 
-    //                         </div>`
+        diceArrayHtml[5] = `<div id="dice6Score" class="dice">
+                                <div class="dot face-six dot-1"></div>
+                                <div class="dot face-six dot-2"></div>
+                                <div class="dot face-six dot-3"></div>
+                                <div class="dot face-six dot-4"></div>
+                                <div class="dot face-six dot-5"></div>   
+                                <div class="dot face-six dot-6"></div> 
+                            </div>`
                             
-    //     return diceArrayHtml[diceScoreIndex-1]                
+        return diceArrayHtml[diceScoreIndex-1]                
 
-    // }
+    }
 
-    // getCreatureDiceHtml(diceValue, diceNumber){
+    getFightingCreatureDiceContainerArrayHtml(){
+        
+        return this.fightingCreatureArray.map((fightingCreature) => 
+            fightingCreature.diceScoreArray.map((dice) =>
+                this.getDiceScoreHtml(dice)
+            ).join('')
+        )
+    }
 
-    //     const creatureDiceHtml = this.getDiceScoreHtml(diceValue)
+    getGameTableRender(){
 
-    //     return `<div id="dice${diceNumber}CreaturePlayer${this.heroInstanceId}">
-    //                 ${creatureDiceHtml}
-    //             </div>
-    //             `
-    // }
+        const playerDeckArrayHtml = this.getPlayerDeckArrayHtml()
 
-    // getCreatureDiceContainerHtml(roundFightCounter){
+        playerDeckArrayHtml.map((playerHtml, playerIndex) =>
+            document.getElementById("player"+(playerIndex+1)+"Deck").innerHTML = playerHtml
+        )
 
-    //     if(isEven(roundFightCounter)){
-    //         this.fightingCreature.diceScoreArray = this.fightingCreature.getCreatureDiceScoreArray()    
-    //     }
-    //     const diceScoreHtml = this.fightingCreature.diceScoreArray.map((num, index) =>
-    //         this.getCreatureDiceHtml(num, index)
-    //          ).join("")
+        const fightingCreatureDiceContainerArrayHtml = this.getFightingCreatureDiceContainerArrayHtml()
 
-    //     return `<div id="player${this.heroInstanceId}DiceContainer" class="table-dice-container">
-    //                 ${diceScoreHtml}
-    //             </div>`
-    // }
+        
+        fightingCreatureDiceContainerArrayHtml.map((playerHtml, playerIndex) =>
+        document.getElementById("player"+(playerIndex+1)+"DiceContainer").innerHTML = playerHtml
+        )
 
-    // getPlayerDeckHtml(){
+        //not here - turn summary!
 
-    //     const fightingCreatureContainerHtml = this.getFightCreatureHtml()
+        //this.getCreatureDamage()
+        
+    }
 
-    //     const passiveSpellHtml = this.getPassiveSpellHtml()
+    getCreatureDamage(){
 
-    //     const attackSpellHtml = this.getAttackSpellHtml()
+        const fightingCreatureDamageScoreArray = this.getFightingCreatureDamageScore()
 
-    //     // TODO: HERE LOGGING GameTable
-    //     //console.log(this)
-    //     // TODO:
+        this.fightingCreatureArray.map((fightingCreature) =>
+            fightingCreature.health -= fightingCreatureDamageScoreArray.pop()
+        )
 
-    //     return `
-    //     ${attackSpellHtml}
-    //     ${fightingCreatureContainerHtml}
-    //     ${passiveSpellHtml}
-    //     `
-    // }  
-    
-    // //TODO: add take damage to creature
-    // // TODO: add take damage to hero
-    // // count it by ratio chance
+        const playerDeckArrayHtml = this.getPlayerDeckArrayHtml()
 
+        playerDeckArrayHtml.map((playerHtml, playerIndex) =>
+            document.getElementById("player"+(playerIndex+1)+"Deck").innerHTML = playerHtml
+        )
 
-
+        // const clearCreatureDiceContainer = new Array(this.fightingCreatureArray.length).fill(0).map((num, playerIndex)=>
+        //     document.getElementById("player"+(playerIndex+1)+"DiceContainer").innerHTML = ""
+        // )  
+    }
 }
     
 
