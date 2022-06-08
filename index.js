@@ -11,6 +11,8 @@ const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
 let roundFightCounter = 0
 
 let test = false
+let isGameActive = false
+let gameTable
 
 function render(){
     document.getElementById("player1Card-El").innerHTML = heroCard1.getPlayerCardHtml()
@@ -28,18 +30,24 @@ render()
 
 
 document.getElementById("btnAtt").addEventListener("click", () => {
-
-    const gameTable = new GameTable(heroCard1, heroCard2)
+    
+    if(!isGameActive){
+        gameTable = new GameTable(heroCard1, heroCard2)
+        isGameActive = true
+    }
+   
     //TODO: get data from table (selected creature) and do new gameTable which contains both fightingCreatures
     if(!test){
         
-        gameTable.getGameTableRender()
+        gameTable.getGameDiceRollRender()
         test = true
     }
     else{
-        gameTable.getCreatureDamage()
+        gameTable.getTurnSummary()
         test = false
     }
+
+    gameTable.getEndGame()
     
 })
 
