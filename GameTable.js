@@ -54,12 +54,6 @@ class GameTable{
     }
 
     getCreatureHealthBarArrayHtml(){
-
-        // for testing purpose
-
-        //this.fightingCreatureArray[0].health = this.fightingCreatureArray[0].health*0.5
-
-
         const percentArray = new Array(this.fightingCreatureMaxHealthArray.length).fill(0).map((num, index) =>
             num = getPercentage(this.fightingCreatureArray[index].health, this.fightingCreatureMaxHealthArray[index])
         )
@@ -86,6 +80,9 @@ class GameTable{
                      </div>
                      `
         )   
+    }
+    getEndTableHtml(){
+
     }
 
 
@@ -129,6 +126,8 @@ class GameTable{
         )
     }
 
+
+
     getPlayerDeckArrayHtml(){
 
         this.getFightingCreatureDiceScoreArray()
@@ -142,41 +141,36 @@ class GameTable{
         )
     }
 
-    getDiceScoreHtml(diceScoreIndex){
+    getDiceScoreHtml(diceScore){
 
         const diceArrayHtml = new Array(6);
 
-        diceArrayHtml[0] = `<div id="dice1Score" class="dice">
+        diceArrayHtml[0] = `<div class="dice">
                                 <div class="dot face-one dot-1"></div>
                             </div>`
-
-        diceArrayHtml[1] = `<div id="dice2Score" class="dice">
+        diceArrayHtml[1] = `<div class="dice">
                                 <div class="dot face-two dot-1"></div>
                                 <div class="dot face-two dot-2"></div>
                             </div>` 
-
-        diceArrayHtml[2] = `<div id="dice3Score" class="dice">
+        diceArrayHtml[2] = `<div class="dice">
                                 <div class="dot face-three dot-1"></div>
                                 <div class="dot face-three dot-2"></div>
                                 <div class="dot face-three dot-3"></div> 
                             </div>`
-
-        diceArrayHtml[3] = `<div id="dice4Score" class="dice">
+        diceArrayHtml[3] = `<div class="dice">
                                 <div class="dot face-four dot-1"></div>
                                 <div class="dot face-four dot-2"></div>
                                 <div class="dot face-four dot-3"></div>
                                 <div class="dot face-four dot-4"></div>  
-                            </div>`  
-
-        diceArrayHtml[4] = `<div id="dice5Score" class="dice">
+                            </div>`
+        diceArrayHtml[4] = `<div class="dice">
                                 <div class="dot face-five dot-1"></div>
                                 <div class="dot face-five dot-2"></div>
                                 <div class="dot face-five dot-3"></div>
                                 <div class="dot face-five dot-4"></div>
                                 <div class="dot face-five dot-5"></div>   
                             </div>` 
-
-        diceArrayHtml[5] = `<div id="dice6Score" class="dice">
+        diceArrayHtml[5] = `<div class="dice">
                                 <div class="dot face-six dot-1"></div>
                                 <div class="dot face-six dot-2"></div>
                                 <div class="dot face-six dot-3"></div>
@@ -184,22 +178,23 @@ class GameTable{
                                 <div class="dot face-six dot-5"></div>   
                                 <div class="dot face-six dot-6"></div> 
                             </div>`
-                            
-        return diceArrayHtml[diceScoreIndex-1]                
-
+      
+        return diceArrayHtml[diceScore-1]              
     }
 
     getFightingCreatureDiceContainerArrayHtml(){
-        
-        return this.fightingCreatureArray.map((fightingCreature) => 
-            fightingCreature.diceScoreArray.map((dice) =>
-                this.getDiceScoreHtml(dice)
-            ).join('')
-        )
+
+        return this.fightingCreatureArray.map((fightingCreature, indexArray)=>
+                    fightingCreature.diceScoreArray.map((diceValue, indexDice) =>
+                        `<div id="dice${indexDice+1}CreaturePlayer${indexArray+1}">
+                            ${this.getDiceScoreHtml(diceValue)}
+                        </div>
+                        `
+                    ).join("")
+                )
     }
 
-    getGameTableRender(){
-
+    getGameDiceRollRender(){
         const playerDeckArrayHtml = this.getPlayerDeckArrayHtml()
 
         playerDeckArrayHtml.map((playerHtml, playerIndex) =>
@@ -207,20 +202,13 @@ class GameTable{
         )
 
         const fightingCreatureDiceContainerArrayHtml = this.getFightingCreatureDiceContainerArrayHtml()
-
-        
+     
         fightingCreatureDiceContainerArrayHtml.map((playerHtml, playerIndex) =>
         document.getElementById("player"+(playerIndex+1)+"DiceContainer").innerHTML = playerHtml
         )
-
-        //not here - turn summary!
-
-        //this.getCreatureDamage()
-        
     }
 
-    getCreatureDamage(){
-
+    getTurnSummary(){
         const fightingCreatureDamageScoreArray = this.getFightingCreatureDamageScore()
 
         this.fightingCreatureArray.map((fightingCreature) =>
@@ -233,9 +221,25 @@ class GameTable{
             document.getElementById("player"+(playerIndex+1)+"Deck").innerHTML = playerHtml
         )
 
-        // const clearCreatureDiceContainer = new Array(this.fightingCreatureArray.length).fill(0).map((num, playerIndex)=>
-        //     document.getElementById("player"+(playerIndex+1)+"DiceContainer").innerHTML = ""
-        // )  
+        const clearCreatureDiceContainer = new Array(this.fightingCreatureArray.length).fill(0).map((num, playerIndex)=>
+             document.getElementById("player"+(playerIndex+1)+"DiceContainer").innerHTML = ""
+        )  
+    }
+
+    getCurrentFightingCreatureHealthStatusArray(){
+        
+    } 
+
+    getEndGame(){
+
+        const currentFightingCreatureHealthArray =  this.fightingCreatureArray.map((fightingCreature) =>
+            fightingCreature.health
+        )
+
+
+
+        console.log(currentFightingCreatureHealthArray)
+
     }
 }
     
