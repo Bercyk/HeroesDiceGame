@@ -6,8 +6,6 @@ import GameTable from "./GameTable.js"
 const heroCard1 = new Hero(getRandomObjectFromData(heroStats))
 const heroCard2 = new Hero(getRandomObjectFromData(heroStats))
 
-//const gameTableArray = [heroCard1, heroCard2]
-
 let roundFightCounter = 0
 
 let test = false
@@ -31,6 +29,8 @@ render()
 
 document.getElementById("btnAtt").addEventListener("click", () => {
     
+    
+
     if(!isGameActive){
         gameTable = new GameTable(heroCard1, heroCard2)
         isGameActive = true
@@ -47,7 +47,8 @@ document.getElementById("btnAtt").addEventListener("click", () => {
         test = false
     }
 
-    gameTable.getEndGame()
+    //gameTable.getEndCreatureFight()
+
     
 })
 

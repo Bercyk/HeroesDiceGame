@@ -38,7 +38,7 @@ class GameTable{
 
     // get damage summary
 
-    getFightingCreatureDamageScore(){
+    getFightingCreatureDiceDamageScore(){
         
         const fightingCreatureDamageScoreArray = this.fightingCreatureArray.map((fightingCreature) =>
             fightingCreature.getCreatureDamageSummary()
@@ -81,9 +81,10 @@ class GameTable{
                      `
         )   
     }
-    getEndTableHtml(){
+    
+    // getEndTableHtml(){
 
-    }
+    // }
 
 
 
@@ -209,38 +210,109 @@ class GameTable{
     }
 
     getTurnSummary(){
-        const fightingCreatureDamageScoreArray = this.getFightingCreatureDamageScore()
+
+
+        //creature dice damage
+        const fightingCreatureDiceDamageScoreArray = this.getFightingCreatureDiceDamageScore()
 
         this.fightingCreatureArray.map((fightingCreature) =>
-            fightingCreature.health -= fightingCreatureDamageScoreArray.pop()
+            fightingCreature.health -= fightingCreatureDiceDamageScoreArray.pop()
         )
 
-        const playerDeckArrayHtml = this.getPlayerDeckArrayHtml()
+        this.getClearDiceContainer()
 
-        playerDeckArrayHtml.map((playerHtml, playerIndex) =>
-            document.getElementById("player"+(playerIndex+1)+"Deck").innerHTML = playerHtml
-        )
+        const isCreatureDead = this.getGameStatus()
 
-        const clearCreatureDiceContainer = new Array(this.fightingCreatureArray.length).fill(0).map((num, playerIndex)=>
-             document.getElementById("player"+(playerIndex+1)+"DiceContainer").innerHTML = ""
-        )  
-    }
+        if(isCreatureDead){
+            console.log("creature dead")
 
-    getCurrentFightingCreatureHealthStatusArray(){
+            const test = this.fightingCreatureArray.map((fightingCreature, indexPlayer) =>
+                fightingCreature.health <= 0 ?  true : false
+            )
+
+            console.log(test)
+
+            // const test2 = test.filter((value, arrayIndex) => {
+            //         if(value){
+            //             value = arrayIndex
+            //             return value
+            //         }
+            //     }
+            // )
+
+            const test2 = test.filter(function(value, arrayIndex) {
+
+                value ? arrayIndex : ""
+                // if(value){
+                //     return arrayIndex
+                // }
+            })
+
+            console.log(test2)
+
+
+
+            //this.getFightingCreatureDispose()
+        }
+        else{
+            const playerDeckArrayHtml = this.getPlayerDeckArrayHtml()
+
+            playerDeckArrayHtml.map((playerHtml, playerIndex) =>
+                document.getElementById("player"+(playerIndex+1)+"Deck").innerHTML = playerHtml
+            )
+
+        }
+
         
-    } 
+         
+    }
 
-    getEndGame(){
-
-        const currentFightingCreatureHealthArray =  this.fightingCreatureArray.map((fightingCreature) =>
-            fightingCreature.health
+    getFightingCreatureHealthArray(){
+        return this.fightingCreatureArray.map((fightingCreature) =>
+        fightingCreature.health
         )
+    }
+
+    getClearDiceContainer(){
+        return new Array(this.fightingCreatureArray.length).fill(0).map((num, playerIndex)=>
+        document.getElementById("player"+(playerIndex+1)+"DiceContainer").innerHTML = ""
+        ) 
+    }
+
+    getFightingCreatureDispose(deadCreatureIndex){
+
+        this.fightingCreatureArray.splice(deadCreatureIndex)
+
+        console.log(this.fightingCreatureArray)
+    
+    }
+
+    //returns true if one of creature's health is zero or smaller
+    getGameStatus(){
+        
+        const fightingCreatureHealthArray =  this.getFightingCreatureHealthArray()
+        
+        const fightingCreatureStatusArray =  fightingCreatureHealthArray.map((creatureHealth) => 
+            creatureHealth =  creatureHealth <= 0 ? true : false
+        )
+        
+        return fightingCreatureStatusArray.some(creatureStatus => creatureStatus === true)
+    }
+
+    getEndCreatureFight(){
 
 
+        const isCreatureDead = this.getGameStatus()
+        
 
-        console.log(currentFightingCreatureHealthArray)
+        
+        if(isCreatureDead){
+            //console.log("Player")
+        }
 
     }
+
+
 }
     
 
